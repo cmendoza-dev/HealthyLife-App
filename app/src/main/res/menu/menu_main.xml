@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/record"
+            android:icon="@drawable/historial"
+            android:title="@string/historial_citas"/>
+        <item
+            android:id="@+id/account"
+            android:icon="@drawable/cuenta"
+            android:title="@string/cuenta" />
+    </group>
+
+    <item
+        android:title="@string/comunicaciones"
+        android:checkable="false">
+        <menu>
+            <group
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/contact_us"
+                    android:icon="@drawable/contactos"
+                    android:title="@string/contactanos"/>
+                <item
+                    android:id="@+id/complaints_book"
+                    android:icon="@drawable/reclamaciones"
+                    android:title="@string/libroreclamaciones" />
+            </group>
+        </menu>
+    </item>
+</menu>
