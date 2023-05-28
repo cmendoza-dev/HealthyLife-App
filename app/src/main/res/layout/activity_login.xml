@@ -45,7 +45,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtCorreo"
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
@@ -68,7 +68,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtClave"
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
