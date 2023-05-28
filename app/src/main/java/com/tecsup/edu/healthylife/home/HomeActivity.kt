@@ -1,9 +1,6 @@
 package com.tecsup.edu.healthylife.home
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +8,6 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.tecsup.edu.healthylife.R
-import com.tecsup.edu.healthylife.authentication.AuthActivity
 
 class HomeActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,19 +22,18 @@ class HomeActivity:AppCompatActivity() {
 
         btnRightNav.setOnClickListener {
             navView.isEnabled = true
-            drawerLayout.openDrawer(GravityCompat.END)
+            drawerLayout.openDrawer(GravityCompat.START)
         }
 
         configurationNavegatioDrawer()
 
-
     }
 
     private fun configurationNavegatioDrawer(){
-        val navViewLeft = findViewById<NavigationView>(R.id.nav_view)
+        val navView = findViewById<NavigationView>(R.id.nav_view)
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
 
-        navViewLeft.setNavigationItemSelectedListener { menuItem ->
+        navView.setNavigationItemSelectedListener { menuItem ->
             drawerLayout.closeDrawer(GravityCompat.START)
             when(menuItem.itemId){
                 R.id.record -> {
@@ -63,5 +58,6 @@ class HomeActivity:AppCompatActivity() {
             }
         }
     }
+
 
 }
