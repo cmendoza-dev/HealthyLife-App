@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="20dp"
+    android:paddingTop="20dp"
+    android:paddingEnd="20dp"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/registerdate"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="10dp"
+        >
+
+        <Spinner
+            android:id="@+id/especialidad"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:entries="@array/especialidad"
+            android:padding="5dp"
+
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="10dp"
+        >
+
+        <Spinner
+            android:id="@+id/doctor"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:entries="@array/doctor"
+            android:padding="5dp"
+
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="10dp"
+        >
+
+        <Spinner
+            android:id="@+id/fecha"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:entries="@array/fecha"
+            android:padding="5dp"
+
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="10dp"
+        >
+
+        <Spinner
+            android:id="@+id/horario"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:entries="@array/horario"
+            android:padding="5dp"
+
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnBoton"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="@color/lila_544"
+        android:text="@string/generate" />
+
+</LinearLayout>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+
+
+    >
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Nombre"
+        android:textColorHint="@color/lila_9b9"
+        android:layout_marginTop="25dp"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:inputType="text"
+            />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Apellidos"
+        android:textColorHint="@color/lila_9b9"
+        android:layout_marginTop="15dp"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:inputType="text"
+            />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="@string/correo"
+        android:layout_marginTop="15dp"
+        android:textColorHint="@color/lila_9b9">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:inputType="textEmailAddress"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/cargos"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:entries="@array/cargos"
+        android:padding="5dp"
+        android:layout_gravity="top"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/cargos"
+        android:background="@android:drawable/divider_horizontal_bright" />
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColorHint="@color/lila_9b9"
+        android:layout_marginTop="15dp"
+        android:hint="@string/contrasena"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/purple_700"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:inputType="textPassword"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColorHint="@color/lila_9b9"
+        android:layout_marginTop="15dp"
+        android:hint="@string/repetircontrasena"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/purple_700"
+        >
+      >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:inputType="textPassword"
+
+
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox android:id="@+id/checkbox_meat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acepto los términos y condiciones"
+        android:layout_marginTop="25dp"
+        />
+
+
+    <Button
+        android:id="@+id/btnBoton"
+        android:text="@string/get_into"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/lila_5f5"
+        android:layout_marginTop="35dp"
+        />
+
+
+
+
+</LinearLayout>

@@ -11,4 +11,71 @@
     <string name="comunicaciones">Comunicaciones</string>
     <string name="contactanos">Contactanos</string>
     <string name="libroreclamaciones">Libro Reclamaciones</string>
+    <string name="repetircontrasena">Repetir Contraseña</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="RegistroUsuario">Registrarse</string>
+    <string name="correo">Correo</string>
+    <string name="dating">Historial de Citas</string>
+    <string name="date">CITA - 5/5/23</string>
+    <string name="receta">RECETA - 5/5/23</string>
+    <string name="doctor">Doctor: </string>
+    <string name="especialidad">Especialidad: </string>
+    <string name="account">Mi Cuenta</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="dni">DNI</string>
+    <string name="address">Dirección</string>
+    <string name="edu">Correo</string>
+    <string name="save">Guardar</string>
+    <string name="generate">Generar</string>
+    <string name="registerdate">Registrar Cita</string>
+    <string name="recetasmedicas">Recetas Médicas</string>
+    <string name="showplus">Ver más</string>
+
+    <string-array name="carreras">
+        <item>Administración de Datos</item>
+        <item>Big Data y Ciencia de Datos</item>
+        <item>Diseño y Desarrollo de Software</item>
+        <item>Producción y Gestión Industrial</item>
+        <item>Tecnología de la Producción</item>
+        <item>Gestión y Mantenimiento de Maquinaria Pesada</item>
+    </string-array>
+    <string-array name="cargos">
+        <item>Estudiante</item>
+        <item>Docente</item>
+        <item>Administrador</item>
+        <item>Director</item>
+        <item>Coordinador</item>
+        <item>Asistente</item>
+    </string-array>
+    <string-array name="especialidad">
+        <item>Alergología</item>
+        <item>Anestesiología</item>
+        <item>Angiología</item>
+        <item>Cardiología</item>
+        <item>Endocrinología</item>
+        <item>Estomatología</item>
+        <item>Farmacología Clínica</item>
+        <item>Pediatría</item>
+        <item>Psiquiatría</item>
+        <item>Nutriología</item>
+        <item>Oncología médica</item>
+        <item>Medicina forense</item>
+    </string-array>
+    <string-array name="doctor">
+        <item>Carlos Mendoza</item>
+        <item>Rommel Hurtado</item>
+        <item>Yeromi Zavala</item>
+        <item>David Ruiz</item>
+    </string-array>
+    <string-array name="fecha">
+        <item>03/06/2023</item>
+        <item>02/06/2023</item>
+        <item>01/06/2023</item>
+        <item>31/05/2023</item>
+    </string-array>
+    <string-array name="horario">
+        <item>Tarde</item>
+        <item>Mañana</item>
+    </string-array>
 </resources>
