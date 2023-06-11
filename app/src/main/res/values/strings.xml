@@ -31,6 +31,7 @@
     <string name="registerdate">Registrar Cita</string>
     <string name="recetasmedicas">Recetas Médicas</string>
     <string name="showplus">Ver más</string>
+    <string name="todo">TODO</string>
 
     <string-array name="carreras">
         <item>Administración de Datos</item>

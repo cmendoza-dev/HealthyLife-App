@@ -19,7 +19,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="48dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/logoprueba"
             />
         <TextView
             android:layout_marginStart="10dp"
