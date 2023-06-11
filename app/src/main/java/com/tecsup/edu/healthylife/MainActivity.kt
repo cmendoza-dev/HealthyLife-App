@@ -4,8 +4,7 @@ package com.tecsup.edu.healthylife
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.widget.Button
 import com.tecsup.edu.healthylife.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
@@ -15,16 +14,22 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        Handler(Looper.getMainLooper()).postDelayed({
+        val buttonLogin = findViewById<Button>(R.id.btnLogin)
+        buttonLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
 
-            startActivity(
-                Intent(this,
-                LoginActivity::class.java
-            )
-            )
-            finish()
+        val buttonRegistrar = findViewById<Button>(R.id.btnRegistrar)
+        buttonRegistrar.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
 
-        }, 2000)
 
     }
+
+    override fun onBackPressed() {
+        // Dejar vacío para no realizar ninguna acción al presionar el botón de retroceso
+    }
+
+
 }

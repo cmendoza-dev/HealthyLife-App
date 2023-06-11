@@ -27,9 +27,10 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-        }, 3000)
+        }, 4000)
 
     }
+
 
     private fun escribirTexto(texto: String, delay: Long) {
         val spannableStringBuilder = SpannableStringBuilder()
