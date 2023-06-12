@@ -3,12 +3,15 @@ package com.tecsup.edu.healthylife.login
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.tecsup.edu.healthylife.R
 import com.tecsup.edu.healthylife.RegisterActivity
+import com.tecsup.edu.healthylife.ResetPasswordActivity
 import com.tecsup.edu.healthylife.home.HomeActivity
 import com.tecsup.tecsupapp.login.LoginViewModel
 
@@ -23,8 +26,21 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
-        val edtCorreo = findViewById<TextInputEditText>(R.id.emailEditText)
-        val edtClave = findViewById<TextInputEditText>(R.id.passwordEditText)
+        val edtCorreo = findViewById<EditText>(R.id.emailEditText)
+        val edtClave = findViewById<EditText>(R.id.passwordEditText)
+
+        val linkTextView = findViewById<TextView>(R.id.linkTextView)
+        linkTextView.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        val forgetPassword = findViewById<TextView>(R.id.forgetPassword)
+        forgetPassword.setOnClickListener {
+            val intent = Intent(this, ResetPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
 
         val btnIngresar = findViewById<Button>(R.id.btnIngresar)
         btnIngresar.setOnClickListener {
@@ -35,16 +51,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         observableViewModel()
-
-        /*val buttonRegistrar = findViewById<Button>(R.id.btnRegistrar)
-        buttonRegistrar.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }*/
-
-        val buttonRegistrar = findViewById<Button>(R.id.btnRegistrar)
-        buttonRegistrar.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }
 
         supportActionBar?.hide()
     }

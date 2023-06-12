@@ -6,106 +6,145 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center_horizontal|top"
+    android:background="@drawable/bgactivity"
+    android:padding="20dp"
     >
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="90dp"
-        android:layout_marginBottom="78dp"
-        >
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="48dp"
-            android:src="@drawable/logo"
-            />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|top">
+
         <TextView
-            android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="#000000"
-            android:textSize="24sp"
+            android:layout_marginTop="25dp"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="28sp"
             android:layout_gravity="center"
             android:fontFamily="sans-serif-black"
             />
 
-    </LinearLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
+        android:id="@+id/emailEditText"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border"
         android:hint="@string/email"
-        android:textColorHint="@color/lila_5f5"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:maxLines="1"
+        android:inputType="textCapWords"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="8dp"
+        android:padding="18dp"/>
 
-        >
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border"
+        android:hint="@string/password"
+        android:maxLines="1"
+        android:inputType="textPassword"
+        android:padding="18dp"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailEditText"
+
+    <Button
+            android:id="@+id/btnIngresar"
+            android:text="@string/login"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:inputType="textEmailAddress"
+            android:layout_height="60dp"
+            android:backgroundTint="#febb74"
+            android:layout_marginTop="35dp"
+            android:textSize="18sp"
+            android:elevation="4dp"
+            android:textAllCaps="false"
+            android:background="@drawable/rounded_button_background"
             />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/forgetPassword"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forget"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:autoLink="web"
+            />
 
-    <com.google.android.material.textfield.TextInputLayout
+
+        <Button
+            android:id="@+id/btnFacebook"
+            android:text="@string/facebook"
+            android:layout_marginTop="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textAllCaps="false"
+            android:drawableStart="@drawable/facebook"
+            android:drawablePadding="4dp"
+            android:paddingStart="25dp"
+            android:textColor="@color/white"
+            android:backgroundTint="#387fc1"
+            android:textSize="18sp"
+            android:background="@drawable/edittext_border"
+            android:elevation="4dp"
+            />
+
+    <Button
+        android:id="@+id/btnGoogle"
+        android:text="@string/google"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:textColorHint="@color/lila_5f5"
-        android:layout_marginTop="20dp"
-        app:passwordToggleTint="@color/black"
-        app:passwordToggleEnabled="true"
-        android:hint="@string/password"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:backgroundTint="#ff3300"
+        android:drawableLeft="@drawable/google"
+        android:drawablePadding="4dp"
+        android:paddingStart="25dp"
+        android:textSize="18sp"
+        android:background="@drawable/edittext_border"
+        android:elevation="4dp"
+        />
 
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:inputType="textPassword"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <LinearLayout
-        android:layout_width="474dp"
-        android:layout_height="384dp"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:background="@drawable/fondo"
-        >
-        <Button
-            android:id="@+id/btnIngresar"
-            android:text="@string/get_into"
-            android:layout_width="297dp"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/lila_5f5"
-            android:layout_marginTop="40dp"
-            android:textSize="20sp"
-            android:elevation="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom">
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/donthave"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             />
 
-        <Button
-            android:id="@+id/btnRegistrar"
-            android:text="@string/register"
-            android:layout_marginTop="35dp"
-            android:layout_width="297dp"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/lila_9b9"
-            android:textSize="20sp"
-            android:elevation="4dp"
+        <TextView
+            android:id="@+id/linkTextView"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/crear_cuenta"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:autoLink="web"
             />
+
     </LinearLayout>
+
+
+
+
 
 
 

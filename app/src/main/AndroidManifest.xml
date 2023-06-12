@@ -33,8 +33,9 @@
         <activity android:name=".DatingHistoryActivity"/>
         <activity android:name=".RecetasMedicasActivity"/>
         <activity android:name=".GenerateDateActivity"/>
-
-
+        <activity android:name=".ResetPasswordActivity"/>
+        <activity android:name=".NewPasswordActivity"/>
+        <activity android:name=".ContextMessageActivaty"/>
     </application>
 
 </manifest>

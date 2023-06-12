@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#fff7e2"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
     android:padding="20dp"
@@ -24,7 +25,7 @@
             android:layout_gravity="center"
             android:fontFamily="sans-serif-black"
             android:text="HEALTHY LIFE"
-            android:textColor="#1d6fdb"
+            android:textColor="#4a4536"
             android:textSize="28sp" />
 
         <ImageView
@@ -41,7 +42,7 @@
             android:layout_gravity="center"
             android:fontFamily="sans-serif"
             android:text="El buen médico trata la enfermedad; el gran médico trata al paciente con la enfermedad"
-            android:textColor="#1d6fdb"
+            android:textColor="#4a4536"
             android:textAlignment="center"
             android:textSize="15sp" />
 
@@ -60,8 +61,10 @@
             android:textColor="@color/white"
             android:layout_width="250dp"
             android:layout_height="55dp"
-            android:background="@drawable/rounded_buttonblue_background"
+            android:background="@drawable/rounded_button_background"
+            android:backgroundTint="#ff3200"
             android:textSize="18sp"
+            android:textAllCaps="false"
             android:elevation="4dp"
             />
 
@@ -73,8 +76,9 @@
             android:layout_width="250dp"
             android:layout_height="55dp"
             android:background="@drawable/rounded_button_background"
-            android:textColor="#0166f4"
+            android:textColor="#ff3202"
             android:textSize="18dp"
+            android:textAllCaps="false"
             android:elevation="4dp"
             />
 
