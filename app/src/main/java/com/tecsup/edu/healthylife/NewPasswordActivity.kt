@@ -4,7 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.tecsup.edu.healthylife.login.LoginActivity
+import com.tecsup.edu.healthylife.home.HomeActivity
+
 
 class NewPasswordActivity: AppCompatActivity(){
 
@@ -16,7 +17,7 @@ class NewPasswordActivity: AppCompatActivity(){
 
         val buttonLogin = findViewById<Button>(R.id.btnNextLogin)
         buttonLogin.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
         }
 
 

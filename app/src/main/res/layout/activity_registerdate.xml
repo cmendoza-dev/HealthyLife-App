@@ -7,6 +7,7 @@
     android:paddingEnd="20dp"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bgactivity"
 
     >
 

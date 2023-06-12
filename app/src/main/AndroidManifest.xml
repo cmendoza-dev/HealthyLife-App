@@ -35,7 +35,7 @@
         <activity android:name=".GenerateDateActivity"/>
         <activity android:name=".ResetPasswordActivity"/>
         <activity android:name=".NewPasswordActivity"/>
-        <activity android:name=".ContextMessageActivaty"/>
+        <activity android:name=".ContextMessageActivity"/>
     </application>
 
 </manifest>

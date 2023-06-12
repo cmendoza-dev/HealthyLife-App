@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.tecsup.edu.healthylife.login.LoginActivity
 
 class ResetPasswordActivity: AppCompatActivity() {
 
@@ -17,7 +16,7 @@ class ResetPasswordActivity: AppCompatActivity() {
 
         val buttonLogin = findViewById<Button>(R.id.btnSend)
         buttonLogin.setOnClickListener {
-            startActivity(Intent(this, ContextMessageActivaty::class.java))
+            startActivity(Intent(this, ContextMessageActivity::class.java))
         }
 
 
