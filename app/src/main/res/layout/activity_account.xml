@@ -1,234 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="20dp"
-    android:paddingTop="20dp"
-    android:paddingEnd="20dp"
+    android:padding="20dp"
     android:orientation="vertical"
     android:background="@drawable/bgactivity"
     >
 
-    <TextView
-        android:id="@+id/textView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/account"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:orientation="horizontal">
 
-    <TextView
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:textSize="15sp"
-        android:text="@string/name"
-        android:textStyle="bold"
-
-        />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="10dp"
-        >
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="15dp"
-            android:textSize="16sp"
-            android:text="Carlos"
+            android:text="@string/account"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:textSize="25sp"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/userBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/bell" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/user"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:text="Carlos Mendoza"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border"
+        android:layout_marginTop="30dp"
+        android:paddingStart="23dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="23dp"
+        android:paddingBottom="0dp"
+        >
+
+        <TextView
+            android:id="@+id/textViewNombreLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
             android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
             />
-    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:textSize="15sp"
-        android:text="@string/last_name"
-        android:textStyle="bold"
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Carlos"
+            android:layout_below="@id/textViewNombreLabel"
+            android:textSize="16sp"
+            android:textColor="@android:color/black" />
 
-        />
+    </RelativeLayout>
 
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="10dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border"
+        android:layout_marginTop="8dp"
+        android:paddingStart="23dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="23dp"
+        android:paddingBottom="0dp"
         >
+
         <TextView
+            android:id="@+id/textViewApellidoLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="15dp"
+            android:text="@string/last_name"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            />
+
+        <EditText
+            android:id="@+id/editTextApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewApellidoLabel"
             android:textSize="16sp"
             android:text="Mendoza Solis"
-            android:textStyle="bold"
-            />
-    </androidx.cardview.widget.CardView>
+            android:textColor="@android:color/black" />
 
-    <TextView
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:textSize="15sp"
-        android:text="@string/dni"
-        android:textStyle="bold"
+    </RelativeLayout>
 
-        />
-
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="10dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border"
+        android:layout_marginTop="8dp"
+        android:paddingStart="23dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="23dp"
+        android:paddingBottom="0dp"
         >
+
         <TextView
+            android:id="@+id/textViewCorreoLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="15dp"
-            android:textSize="16sp"
-            android:text="62228372"
+            android:text="@string/email"
             android:textStyle="bold"
-
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
             />
-    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:textSize="15sp"
-        android:text="@string/address"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-
-        />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="10dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editTextCorreo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="15dp"
-            android:textSize="16sp"
-            android:text="Ubr. Buenos Aires Sur"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            />
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:textSize="15sp"
-        android:text="@string/edu"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-
-        />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="10dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="15dp"
+            android:layout_below="@id/textViewCorreoLabel"
             android:textSize="16sp"
             android:text="carlos.mendoza.s@tecsup.edu.pe"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            />
-    </androidx.cardview.widget.CardView>
+            android:textColor="@android:color/black" />
 
-    <TextView
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:textSize="15sp"
-        android:text="@string/password"
-        android:textStyle="bold"
-        android:textColor="@color/black"
+    </RelativeLayout>
 
-        />
-
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="10dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border"
+        android:layout_marginTop="8dp"
+        android:paddingStart="23dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="23dp"
+        android:paddingBottom="0dp"
         >
+
         <TextView
+            android:id="@+id/textViewCelularLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="15dp"
-            android:textSize="16sp"
-            android:text="12345678"
+            android:text="@string/phone"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:inputType="textPassword"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
             />
-    </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:id="@+id/editTextCelular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewCelularLabel"
+            android:textSize="16sp"
+            android:inputType="phone"
+            android:text="953154791"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border"
+        android:layout_marginTop="8dp"
+        android:paddingStart="23dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="23dp"
+        android:paddingBottom="0dp"
+        >
+
+        <TextView
+            android:id="@+id/textViewDniLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dni"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            />
+
+        <EditText
+            android:id="@+id/editTextDni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewDniLabel"
+            android:textSize="16sp"
+            android:maxLength="8"
+            android:inputType="number"
+            android:text="62228372"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border"
+        android:layout_marginTop="8dp"
+        android:paddingStart="23dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="23dp"
+        android:paddingBottom="0dp"
+        >
+
+        <TextView
+            android:id="@+id/textViewContrasenaLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            />
+
+        <EditText
+            android:id="@+id/editTextContrasena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewContrasenaLabel"
+            android:textSize="16sp"
+            android:maxLength="8"
+            android:inputType="textPassword"
+            android:text="12345678"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
 
     <Button
         android:id="@+id/btnBoton"
         android:text="@string/save"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:backgroundTint="@color/lila_544"
         android:layout_marginTop="35dp"
-        android:layout_marginStart="15dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:elevation="4dp"
+        android:textAllCaps="false"
+        android:background="@drawable/rounded_button_background"
         />
 
 

@@ -79,5 +79,9 @@ class HomeActivity:AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        // Dejar vacío para no realizar ninguna acción al presionar el botón de retroceso
+    }
+
 
 }

@@ -32,4 +32,22 @@
             </group>
         </menu>
     </item>
+    <item
+        android:title=""
+        android:enabled="false"
+        android:orderInCategory="100">
+        <menu>
+            <item
+                android:id="@+id/divider"
+                android:title=""
+                android:enabled="false"
+                 />
+            <item
+                android:id="@+id/leave"
+                android:icon="@drawable/logout"
+                android:title="@string/leave"
+                />
+        </menu>
+    </item>
+
 </menu>

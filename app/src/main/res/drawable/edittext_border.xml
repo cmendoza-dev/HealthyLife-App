@@ -3,6 +3,6 @@
     <solid android:color="#ffffff"/> <!-- Color de fondo transparente -->
     <stroke
         android:width="2dp"
-        android:color="#f0a977"/>
+        android:color="#eceff5"/>
     <corners android:radius="25dp"/> <!-- Radio de las esquinas -->
 </shape>

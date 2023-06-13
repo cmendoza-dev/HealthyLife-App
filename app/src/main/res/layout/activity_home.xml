@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-    android:background="@drawable/bgactivity"
+    android:background="#0067f4"
 
     >
 
@@ -20,26 +20,25 @@
 
         <Button
             android:id="@+id/moreInfo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             android:background="@drawable/menu"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/userBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/user"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bell"
+            android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp"
@@ -48,56 +47,104 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="90dp"
-                android:layout_marginBottom="78dp"
+                android:layout_marginTop="70dp"
                 android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="28dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/logoprueba" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="sans-serif-black"
+                    android:layout_marginStart="25dp"
+                    android:text="Hola, "
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/app_name"
-                    android:textColor="#000000"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:text="Nos alegra tener de vuelta!"
+                android:layout_marginBottom="48dp"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_home_background"
+                android:orientation="vertical"
+                >
+
+                <EditText
+                    android:id="@+id/nameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/edittext_border"
+                    android:drawableLeft="@drawable/search"
+                    android:drawablePadding="4dp"
+                    android:hint="@string/search"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:padding="18dp"
+                    android:textColorHint="#2762b7" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="25dp"
+                    android:text="Categoría"
+                    android:textColor="#6f777a"
                     android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="25dp"
+                    >
+
+
+
+                    <Button
+                        android:id="@+id/btnGenerateDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:background="@drawable/button_selector"
+                        android:backgroundTint="#0067f4"
+                        android:elevation="4dp"
+                        android:text="@string/generar_cita"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/btnShowDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="32dp"
+                        android:background="@drawable/button_selector"
+                        android:backgroundTint="@color/lila_9b9"
+                        android:elevation="4dp"
+                        android:text="@string/ver_recetas"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnGenerateDate"
-                android:layout_width="297dp"
-                android:layout_height="60dp"
-                android:background="@drawable/button_selector"
-                android:backgroundTint="@color/lila_5f5"
-                android:elevation="4dp"
-                android:text="@string/generar_cita"
-                android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/btnShowDate"
-                android:layout_width="297dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/button_selector"
-                android:backgroundTint="@color/lila_9b9"
-                android:elevation="4dp"
-                android:text="@string/ver_recetas"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:layout_width="474dp"
-                android:layout_height="384dp"
-                android:gravity="bottom"
-                android:orientation="vertical"
-                android:scaleType="centerCrop"
-                android:src="@drawable/fondo" />
 
 
         </LinearLayout>
@@ -111,8 +158,9 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/menu_header_main"
         app:menu="@menu/menu_main"
-        app:itemTextColor="@color/black"
-        app:itemIconTint="@color/black"
+        android:background="#d9eeff"
+        app:itemTextColor="#727f8a"
+        app:itemIconTint="#0067f3"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>

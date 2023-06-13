@@ -18,12 +18,14 @@
     <string name="textmessage">Hemos enviado un SMS a tu móvil</string>
     <string name="newpassword">Nueva contraseña</string>
     <string name="contextmessage">Para completar la verificación de tu correo electrónico, por favor, ingrese el código de activación de 4 dígitos.</string>
-    <string name="mobile">Celular</string>
+    <string name="phone">Celular</string>
     <string name="register">Registrar</string>
     <string name="generar_cita">Generar Cita</string>
     <string name="ver_recetas">Ver Recetas</string>
     <string name="historial_citas">Historial Citas</string>
     <string name="cuenta">Cuenta</string>
+    <string name="leave">Salir</string>
+    <string name="search">Buscar...</string>
     <string name="comunicaciones">Comunicaciones</string>
     <string name="contactanos">Contactanos</string>
     <string name="libroreclamaciones">Libro Reclamaciones</string>
