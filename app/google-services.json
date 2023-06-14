@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "979156999685",
+    "project_id": "healthy-life-516c7",
+    "storage_bucket": "healthy-life-516c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979156999685:android:1271e20d6fc2241441c66c",
+        "android_client_info": {
+          "package_name": "com.tecsup.edu.healthylife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979156999685-ivvt3h2ovtp2f54s3ehgau3arocjgv60.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcXLb857Pk8LhjQWc65i4Cr67poJWnflU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979156999685-ivvt3h2ovtp2f54s3ehgau3arocjgv60.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

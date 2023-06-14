@@ -9,7 +9,7 @@
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="8dp"
-    android:background="#0067f4"
+    android:background="#d9eeff"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
@@ -23,12 +23,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
+        android:textColor="#0c2029"
         android:text="Carlos Mendoza"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#0c2029"
         android:text="carlos.mendoza.s@tecsup.edu.pe" />
 
 

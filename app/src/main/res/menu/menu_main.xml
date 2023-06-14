@@ -6,6 +6,16 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/date"
+            android:icon="@drawable/date_clock"
+            android:title="Reservar cita"/>
+
+        <item
+            android:id="@+id/recetas"
+            android:icon="@drawable/book_multiple"
+            android:title="Ver recetas"/>
+
+        <item
             android:id="@+id/record"
             android:icon="@drawable/historial"
             android:title="@string/historial_citas"/>
@@ -37,11 +47,7 @@
         android:enabled="false"
         android:orderInCategory="100">
         <menu>
-            <item
-                android:id="@+id/divider"
-                android:title=""
-                android:enabled="false"
-                 />
+
             <item
                 android:id="@+id/leave"
                 android:icon="@drawable/logout"
