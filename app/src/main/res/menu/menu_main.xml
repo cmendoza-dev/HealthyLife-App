@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
@@ -8,17 +7,17 @@
         <item
             android:id="@+id/date"
             android:icon="@drawable/date_clock"
-            android:title="Reservar cita"/>
+            android:title="Reservar cita" />
 
         <item
             android:id="@+id/recetas"
             android:icon="@drawable/book_multiple"
-            android:title="Ver recetas"/>
+            android:title="Ver recetas" />
 
         <item
             android:id="@+id/record"
             android:icon="@drawable/historial"
-            android:title="@string/historial_citas"/>
+            android:title="@string/historial_citas" />
         <item
             android:id="@+id/account"
             android:icon="@drawable/cuenta"
@@ -26,15 +25,14 @@
     </group>
 
     <item
-        android:title="@string/comunicaciones"
-        android:checkable="false">
+        android:checkable="false"
+        android:title="@string/comunicaciones">
         <menu>
-            <group
-                android:checkableBehavior="single">
+            <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/contact_us"
                     android:icon="@drawable/contactos"
-                    android:title="@string/contactanos"/>
+                    android:title="@string/contactanos" />
                 <item
                     android:id="@+id/complaints_book"
                     android:icon="@drawable/reclamaciones"
@@ -43,16 +41,15 @@
         </menu>
     </item>
     <item
-        android:title=""
         android:enabled="false"
-        android:orderInCategory="100">
+        android:orderInCategory="100"
+        android:title="">
         <menu>
 
             <item
                 android:id="@+id/leave"
                 android:icon="@drawable/logout"
-                android:title="@string/leave"
-                />
+                android:title="@string/leave" />
         </menu>
     </item>
 

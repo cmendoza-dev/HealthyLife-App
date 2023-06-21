@@ -2,39 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
     android:background="@drawable/bgactivity"
-    >
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center_horizontal|top">
+        android:gravity="center_horizontal|top"
+        android:orientation="vertical">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="25dp"
+            android:fontFamily="sans-serif-black"
             android:text="@string/textmessage"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="28sp"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-black"
-            />
+            android:textSize="28sp" />
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="@string/contextmessage"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:textAlignment="center"
 
             />
 
@@ -42,69 +40,67 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="30dp"
             android:gravity="center|center_horizontal"
-            >
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/codigounoEditText"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@drawable/edittext_border"
-                android:maxLines="1"
-                android:maxLength="1"
                 android:inputType="textCapWords"
-                android:padding="18dp"/>
+                android:maxLength="1"
+                android:maxLines="1"
+                android:padding="18dp" />
 
             <EditText
                 android:id="@+id/codigodosText"
-                android:layout_marginStart="10dp"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/edittext_border"
-                android:maxLines="1"
-                android:maxLength="1"
                 android:inputType="textCapWords"
-                android:padding="18dp"/>
+                android:maxLength="1"
+                android:maxLines="1"
+                android:padding="18dp" />
 
             <EditText
                 android:id="@+id/codigotresText"
-                android:layout_marginStart="10dp"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/edittext_border"
-                android:maxLines="1"
-                android:maxLength="1"
                 android:inputType="textCapWords"
-                android:padding="18dp"/>
+                android:maxLength="1"
+                android:maxLines="1"
+                android:padding="18dp" />
 
             <EditText
                 android:id="@+id/codigocuatroText"
-                android:layout_marginStart="10dp"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/edittext_border"
-                android:maxLines="1"
-                android:maxLength="1"
                 android:inputType="textCapWords"
-                android:padding="18dp"/>
+                android:maxLength="1"
+                android:maxLines="1"
+                android:padding="18dp" />
 
         </LinearLayout>
 
 
-
         <Button
             android:id="@+id/btnNext"
-            android:text="@string/next"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="25dp"
-            android:textSize="18sp"
-            android:elevation="4dp"
-            android:textAllCaps="false"
             android:background="@drawable/rounded_button_background"
-            />
+            android:elevation="4dp"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -113,31 +109,28 @@
             android:gravity="center|bottom">
 
             <TextView
-                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="Reenviar código"
                 android:textColor="@color/white"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/linkTextView"
-                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:autoLink="web"
                 android:text="Clic aquí"
                 android:textColor="@color/white"
-                android:textSize="15sp"
-                android:autoLink="web"
-                />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
 
     </LinearLayout>
-
 
 
 </LinearLayout>

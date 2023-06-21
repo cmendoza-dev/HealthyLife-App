@@ -1,452 +1,420 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingStart="20dp"
-    android:paddingTop="20dp"
-    android:paddingEnd="20dp"
-    android:orientation="vertical"
-    android:background="@drawable/bgactivity"
-    >
-
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/recetasmedicas"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/bgactivity"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp">
 
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/white"
-        app:cardCornerRadius="7dp"
-        app:cardElevation="10dp"
-        >
-
-        <Spinner
-            android:id="@+id/especialidad"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/recetasmedicas"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
             android:layout_height="50dp"
-            android:entries="@array/especialidad"
-            android:padding="5dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="10dp">
 
-            />
+            <Spinner
+                android:id="@+id/especialidad"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/especialidad"
+                android:padding="5dp"
 
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="10dp"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_margin="15dp"
-            >
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/message"
-                android:layout_gravity="top"
                 />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="13dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:layout_margin="15dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="@string/date"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="top"
+                    android:src="@drawable/message" />
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/especialidad"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Cardiología"
-                        android:textColor="#373737"
-                        />
-                </LinearLayout>
+                        android:text="@string/date"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/doctor"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Carlos Mendoza"
-                        android:textColor="#373737"
-                        />
-                </LinearLayout>
+                        android:orientation="horizontal">
 
-                <Button
-                    android:layout_gravity="end"
-                    android:id="@+id/btnShowMore"
-                    android:text="@string/showplus"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:textSize="12sp"
-                    android:backgroundTint="@color/lila_544"
-                    />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/especialidad" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Cardiología"
+                            android:textColor="#373737" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/doctor" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Carlos Mendoza"
+                            android:textColor="#373737" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnShowMore"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end"
+                        android:backgroundTint="@color/lila_544"
+                        android:text="@string/showplus"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
 
 
             </LinearLayout>
 
+        </androidx.cardview.widget.CardView>
 
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="10dp"
-        >
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_margin="15dp"
-            >
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/message"
-                android:layout_gravity="top"
-                />
+            android:layout_height="135dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="13dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:layout_margin="15dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="@string/receta"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="top"
+                    android:src="@drawable/message" />
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/especialidad"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Cardiología"
-                        android:textColor="#373737"
-                        />
-                </LinearLayout>
+                        android:text="@string/receta"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/doctor"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Carlos Mendoza"
-                        android:textColor="#373737"
-                        />
-                </LinearLayout>
+                        android:orientation="horizontal">
 
-                <Button
-                    android:layout_gravity="end"
-                    android:id="@+id/btnBoto"
-                    android:text="@string/showplus"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:textSize="12sp"
-                    android:backgroundTint="@color/lila_544"
-                    />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/especialidad" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Cardiología"
+                            android:textColor="#373737" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/doctor" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Carlos Mendoza"
+                            android:textColor="#373737" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnBoto"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end"
+                        android:backgroundTint="@color/lila_544"
+                        android:text="@string/showplus"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="10dp"
-        >
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_margin="15dp"
-            >
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/message"
-                android:layout_gravity="top"
-                />
+            android:layout_height="135dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="13dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:layout_margin="15dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="@string/receta"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="top"
+                    android:src="@drawable/message" />
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/especialidad"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Cardiología"
-                        android:textColor="#373737"
-                        />
-                </LinearLayout>
+                        android:text="@string/receta"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/doctor"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Carlos Mendoza"
-                        android:textColor="#373737"
-                        />
-                </LinearLayout>
+                        android:orientation="horizontal">
 
-                <Button
-                    android:layout_gravity="end"
-                    android:id="@+id/btnBot"
-                    android:text="@string/showplus"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:textSize="12sp"
-                    android:backgroundTint="@color/lila_544"
-                    />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/especialidad" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Cardiología"
+                            android:textColor="#373737" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/doctor" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Carlos Mendoza"
+                            android:textColor="#373737" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnBot"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end"
+                        android:backgroundTint="@color/lila_544"
+                        android:text="@string/showplus"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="10dp"
-        >
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_margin="15dp"
-            >
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/message"
-                android:layout_gravity="top"
-                />
+            android:layout_height="135dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="13dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:layout_margin="15dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="@string/receta"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="top"
+                    android:src="@drawable/message" />
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/especialidad"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Cardiología"
-                        android:textColor="#373737"
-                        />
-                </LinearLayout>
+                        android:text="@string/receta"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/doctor"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Carlos Mendoza"
-                        android:textColor="#373737"
-                        />
-                </LinearLayout>
+                        android:orientation="horizontal">
 
-                <Button
-                    android:layout_gravity="end"
-                    android:id="@+id/btnBo"
-                    android:text="@string/showplus"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:textSize="12sp"
-                    android:backgroundTint="@color/lila_544"
-                    />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/especialidad" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Cardiología"
+                            android:textColor="#373737" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/doctor" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Carlos Mendoza"
+                            android:textColor="#373737" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnBo"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end"
+                        android:backgroundTint="@color/lila_544"
+                        android:text="@string/showplus"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
-</LinearLayout>
+    </LinearLayout>
 
 </ScrollView>

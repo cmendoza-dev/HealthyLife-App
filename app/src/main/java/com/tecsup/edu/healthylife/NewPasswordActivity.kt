@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.tecsup.edu.healthylife.home.HomeActivity
+import com.tecsup.edu.healthylife.view.HomeActivity
 
 
-class NewPasswordActivity: AppCompatActivity(){
+class NewPasswordActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

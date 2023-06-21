@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#fefefe"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
     android:padding="20dp"
-    >
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center_horizontal|top">
+        android:gravity="center_horizontal|top"
+        android:orientation="vertical">
 
         <ImageView
-            android:layout_marginTop="25dp"
             android:layout_width="350dp"
             android:layout_height="350dp"
+            android:layout_marginTop="25dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/medical" />
+            android:src="@drawable/undraw_medicinal" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:text="Bienvenido a"
-            android:textColor="#5d8ccf"
+            android:textColor="#5c51df"
             android:textSize="28sp" />
 
         <TextView
@@ -40,18 +36,18 @@
             android:layout_gravity="center"
             android:fontFamily="sans-serif-black"
             android:text="HEALTHY LIFE"
-            android:textColor="#5d8ccf"
+            android:textColor="#5c51df"
             android:textSize="28sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:fontFamily="sans-serif"
             android:text="El buen médico trata la enfermedad; el gran médico trata al paciente con la enfermedad"
-            android:textColor="#4a4536"
             android:textAlignment="center"
+            android:textColor="#4a4536"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -60,34 +56,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center|bottom"
-        >
+        android:orientation="vertical">
+
         <Button
             android:id="@+id/btnLogin"
-            android:text="@string/login"
-            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/rounded_buttonblue_background"
-            android:textSize="18sp"
-            android:textAllCaps="false"
             android:elevation="4dp"
-            />
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnRegistrar"
-            android:text="@string/crear_cuenta"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="50dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
             android:background="@drawable/rounded_buttonwhite_background"
-            android:textColor="#0067f3"
-            android:textSize="18dp"
-            android:textAllCaps="false"
             android:elevation="4dp"
-            />
+            android:text="@string/crear_cuenta"
+            android:textAllCaps="false"
+            android:textColor="#5c51df"
+            android:textSize="18dp" />
 
     </LinearLayout>
 

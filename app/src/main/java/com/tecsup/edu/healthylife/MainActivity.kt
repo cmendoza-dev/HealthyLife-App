@@ -2,10 +2,11 @@ package com.tecsup.edu.healthylife
 
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.tecsup.edu.healthylife.login.LoginActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.tecsup.edu.healthylife.view.LoginActivity
+import com.tecsup.edu.healthylife.view.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 
 
-class RecetasMedicasActivity: AppCompatActivity() {
+class RecetasMedicasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recetasmedicas)

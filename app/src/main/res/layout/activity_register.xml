@@ -1,154 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@drawable/bgactivity"
->
+    tools:context=".view.RegisterActivity">
+
+    <RelativeLayout
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:clickable="true"
+        android:elevation="100dp"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerInParent="true"
+            android:elevation="100dp"
+            android:indeterminate="true" />
+
+    </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:background="@drawable/bgactivity"
         android:orientation="vertical"
-        android:gravity="center_horizontal|top">
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="@string/RegistroUsuario"
-        android:textColor="@color/white"
-        android:textSize="28sp"
-        android:layout_gravity="center"
-        android:fontFamily="sans-serif-black"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|top"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_border"
-        android:hint="@string/name"
-        android:maxLines="1"
-        android:inputType="textCapWords"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="8dp"
-        android:padding="18dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/NameTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
-    <EditText
-        android:id="@+id/lastEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_border"
-        android:hint="@string/last_name"
-        android:maxLines="1"
-        android:inputType="textCapWords"
-        android:layout_marginBottom="8dp"
-        android:padding="18dp"/>
+                <com.google.android.material.textfield.TextInputEditText
 
-    <EditText
-        android:id="@+id/emailEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_border"
-        android:hint="@string/email"
-        android:maxLines="1"
-        android:inputType="textCapWords"
-        android:layout_marginBottom="8dp"
-        android:padding="18dp"/>
+                    android:id="@+id/NameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name"
+                    android:inputType="text"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp"
+                    android:textSize="16sp"
 
-        <EditText
-            android:id="@+id/dniEditText"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:id="@+id/LastTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/LastEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/last_name"
+                    android:inputType="text"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp"
+                    android:textSize="16sp"
+
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:id="@+id/EmailTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EmailEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:inputType="text"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp"
+                    android:textSize="16sp"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:id="@+id/DniTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/DniEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/dni"
+                    android:inputType="number"
+                    android:maxLength="8"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp"
+                    android:textSize="16sp"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/MobileTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/MobileEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone"
+                    android:inputType="phone"
+                    android:maxLength="9"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp"
+                    android:textSize="16sp"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:id="@+id/PasswordTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="15"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/PasswordEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLength="15"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="12dp"
+                    android:textSize="16sp"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:id="@+id/ConfirmPasswordTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="15"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ConfirmPasswordEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/repeatpassword"
+                    android:inputType="textPassword"
+                    android:maxLength="15"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/registerBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_button_background"
+                android:elevation="4dp"
+                android:text="@string/get_into"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittext_border"
-            android:hint="@string/dni"
-            android:maxLines="1"
-            android:maxLength="8"
-            android:inputType="textCapWords"
-            android:layout_marginBottom="8dp"
-            android:padding="18dp"/>
+            android:gravity="center|bottom">
 
-        <EditText
-            android:id="@+id/mobileEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext_border"
-            android:hint="@string/phone"
-            android:maxLines="1"
-            android:maxLength="9"
-            android:inputType="phone"
-            android:layout_marginBottom="8dp"
-            android:padding="18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/alreadyhave"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/linkTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:autoLink="web"
+                android:text="@string/login"
+                android:textColor="@color/purple_700"
+                android:textSize="15sp" />
 
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_border"
-        android:hint="@string/password"
-        android:maxLines="1"
-        android:inputType="textPassword"
-        android:layout_marginBottom="8dp"
-        android:padding="18dp"/>
-
-    <EditText
-        android:id="@+id/passwordrepeatEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_border"
-        android:hint="@string/repeatpassword"
-        android:maxLines="1"
-        android:inputType="textPassword"
-        android:padding="18dp"/>
-
-    <Button
-        android:id="@+id/btnBoton"
-        android:text="@string/get_into"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="35dp"
-        android:textSize="18sp"
-        android:elevation="4dp"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_button_background"
-        />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center|bottom">
-
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/alreadyhave"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            />
-
-        <TextView
-            android:id="@+id/linkTextView"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="@string/login"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:autoLink="web"
-            />
-
-    </LinearLayout>
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

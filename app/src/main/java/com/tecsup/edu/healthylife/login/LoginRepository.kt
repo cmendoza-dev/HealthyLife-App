@@ -1,13 +1,18 @@
-package com.tecsup.tecsupapp.login
+package com.tecsup.edu.healthylife.login
+
+
+import com.tecsup.edu.healthylife.network.ApiService
+import com.tecsup.edu.healthylife.network.LoginRequest
+import com.tecsup.edu.healthylife.network.LoginResponse
+import io.reactivex.rxjava3.core.Single
 
 class LoginRepository {
 
-    fun login(email: String, pass: String) : Boolean {
-        return email == "carlos.mendoza.s@tecsup.edu.pe" && pass == "123"
+    private val api = ApiService().apiService
 
+    fun login(email: String, pass: String): Single<LoginResponse> {
+        return api.login(LoginRequest(email, pass))
     }
 
-
-
-
 }
+

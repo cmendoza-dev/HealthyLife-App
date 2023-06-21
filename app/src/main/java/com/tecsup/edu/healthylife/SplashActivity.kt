@@ -1,13 +1,13 @@
 package com.tecsup.edu.healthylife
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.content.Intent
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.TypefaceSpan
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -44,7 +44,12 @@ class SplashActivity : AppCompatActivity() {
                     spannableStringBuilder.append(char)
 
                     val spannableString = SpannableString(spannableStringBuilder)
-                    spannableString.setSpan(TypefaceSpan("sans-serif-black"), 0, spannableStringBuilder.length, 0)
+                    spannableString.setSpan(
+                        TypefaceSpan("sans-serif-black"),
+                        0,
+                        spannableStringBuilder.length,
+                        0
+                    )
 
                     tvTexto.text = spannableString
 

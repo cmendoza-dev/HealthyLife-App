@@ -3,7 +3,7 @@ package com.tecsup.edu.healthylife
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-class GenerateDateActivity: AppCompatActivity() {
+class GenerateDateActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
