@@ -55,6 +55,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/userName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/app_name"
@@ -84,17 +85,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="50dp"
-                    android:text="Categoría"
+                    android:text="Doctor especialista"
                     android:textColor="#6f777a"
                     android:textSize="20sp" />
 
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/recyclerView"
+                <FrameLayout
+                    android:id="@+id/viewPagerContainer"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="100dp">
 
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </FrameLayout>
 
 
                 <LinearLayout

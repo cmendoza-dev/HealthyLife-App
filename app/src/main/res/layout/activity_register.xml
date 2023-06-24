@@ -6,28 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".view.RegisterActivity">
 
-    <RelativeLayout
-        android:id="@+id/progressBar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#80000000"
-        android:clickable="true"
-        android:elevation="100dp"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ProgressBar
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_centerInParent="true"
-            android:elevation="100dp"
-            android:indeterminate="true" />
-
-    </RelativeLayout>
-
     <LinearLayout
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -57,6 +35,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/name"
                     android:inputType="text"
+                    android:minHeight="48dp"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="10dp"
                     android:textSize="16sp"
@@ -79,6 +58,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/last_name"
                     android:inputType="text"
+                    android:minHeight="48dp"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="10dp"
                     android:textSize="16sp"
@@ -100,7 +80,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
-                    android:inputType="text"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="10dp"
                     android:textSize="16sp"
@@ -123,6 +104,7 @@
                     android:hint="@string/dni"
                     android:inputType="number"
                     android:maxLength="8"
+                    android:minHeight="48dp"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="10dp"
                     android:textSize="16sp"
@@ -144,6 +126,7 @@
                     android:hint="@string/phone"
                     android:inputType="phone"
                     android:maxLength="9"
+                    android:minHeight="48dp"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="10dp"
                     android:textSize="16sp"
@@ -151,6 +134,28 @@
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/AddressTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/AddressEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dirección"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp"
+                    android:textSize="16sp"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
 

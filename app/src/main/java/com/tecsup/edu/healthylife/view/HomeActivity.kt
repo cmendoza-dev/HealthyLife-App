@@ -2,59 +2,52 @@ package com.tecsup.edu.healthylife.view
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.navigation.NavigationView
 import com.tecsup.edu.healthylife.AccountActivity
 import com.tecsup.edu.healthylife.DatingHistoryActivity
 import com.tecsup.edu.healthylife.GenerateDateActivity
 import com.tecsup.edu.healthylife.R
 import com.tecsup.edu.healthylife.RecetasMedicasActivity
-import com.tecsup.edu.healthylife.adapter.DoctorAdapter
-import com.tecsup.edu.healthylife.data.Doctor
-import com.tecsup.edu.healthylife.databinding.ActivityHomeBinding
-import com.tecsup.edu.healthylife.view_model.DoctorViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import com.tecsup.edu.healthylife.adapter.SliderAdapter
+import com.tecsup.edu.healthylife.data.User
+import com.tecsup.edu.healthylife.login.LoginViewModel
+import org.json.JSONException
 import org.json.JSONObject
-import java.io.IOException
+import java.lang.Math.abs
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var viewPager: ViewPager2
+    private lateinit var sliderAdapter: SliderAdapter
+    private val dataList: MutableList<User> = mutableListOf()
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: DoctorAdapter
-    private lateinit var viewModel: DoctorViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
         supportActionBar?.hide()
 
-        recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
-        adapter = DoctorAdapter()
-        recyclerView.adapter = adapter
-
-        viewModel = ViewModelProvider(this).get(DoctorViewModel::class.java)
-        viewModel.doctors.observe(this, Observer { doctors ->
-            adapter.setDoctors(doctors)
-        })
-
-        fetchData()
-
+        val txtUserName = findViewById<TextView>(R.id.userName)
+        val userName = intent.getStringExtra("userName")
+        if (userName != null) {
+            txtUserName.text = userName
+        }
 
         val btnRightNav = findViewById<Button>(R.id.moreInfo)
         val navView = findViewById<NavigationView>(R.id.nav_view)
@@ -65,52 +58,67 @@ class HomeActivity : AppCompatActivity() {
             drawerLayout.openDrawer(GravityCompat.START)
         }
 
-        configurationNavegatioDrawer()
-    }
+        configureNavigationDrawer()
 
+        val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.page_margin)
+        val offsetPx = resources.getDimensionPixelOffset(R.dimen.offset)
 
-    private fun fetchData() {
-        val client = OkHttpClient()
+        viewPager = findViewById(R.id.viewPager)
 
-        val request = Request.Builder()
-            .url("https://reqres.in/api/users?page=1")
-            .build()
+        sliderAdapter = SliderAdapter(dataList) // Asegúrate de tener un adaptador válido
 
-        GlobalScope.launch(Dispatchers.IO) {
-            try {
-                val response = client.newCall(request).execute()
-                val responseData = response.body()?.string()
-
-                withContext(Dispatchers.Main) {
-                    if (response.isSuccessful && !responseData.isNullOrEmpty()) {
-                        val jsonObject = JSONObject(responseData)
-                        val jsonArray = jsonObject.getJSONArray("data")
-
-                        val doctors = ArrayList<Doctor>()
-
-                        for (i in 0 until jsonArray.length()) {
-                            val userObject = jsonArray.getJSONObject(i)
-                            val firstName = userObject.getString("first_name")
-                            val email = userObject.getString("email")
-                            val avatar = userObject.getString("avatar")
-
-                            val doctor = Doctor(firstName, email, avatar)
-                            doctors.add(doctor)
-                        }
-
-                        viewModel.setDoctors(doctors)
-                    } else {
-                        // Manejar el error de la solicitud
-                    }
-                }
-            } catch (e: IOException) {
-                e.printStackTrace()
-                // Manejar el error de la solicitud
+        viewPager.apply {
+            adapter = sliderAdapter
+            addItemDecoration(MarginItemDecoration(pageMarginPx, offsetPx))
+            offscreenPageLimit = 1
+            setPageTransformer { page, position ->
+                val r = 1 - abs(position)
+                page.scaleY = 0.85f + r * 0.15f
             }
         }
+
+        val apiUrl = "http://192.168.1.9:8000/api/users?id_user=1"
+
+        val requestQueue: RequestQueue = Volley.newRequestQueue(this)
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET,
+            apiUrl,
+            null,
+            { response ->
+                try {
+                    for (i in 0 until response.length()) {
+                        val userObject: JSONObject = response.getJSONObject(i)
+
+                        val idUser: Int = userObject.getInt("id_user")
+                        val nombre: String = userObject.getString("nombre")
+                        val apellido: String = userObject.getString("apellido")
+                        val dni: Int = userObject.getInt("dni")
+                        val email: String = userObject.getString("email")
+                        val direccion: String = userObject.getString("direccion")
+                        val telefono: Int = userObject.getInt("telefono")
+                        val password: String = userObject.getString("password")
+                        val especialidad: String = userObject.getString("especialidad")
+
+                        val userData = User(
+                            idUser, nombre, apellido, dni, email, direccion,
+                            telefono, password, especialidad
+                        )
+                        dataList.add(userData)
+                    }
+
+                    sliderAdapter.notifyDataSetChanged()
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            },
+            { error ->
+                error.printStackTrace()
+            })
+
+        requestQueue.add(jsonArrayRequest)
     }
 
-    private fun configurationNavegatioDrawer() {
+    private fun configureNavigationDrawer() {
         val navView = findViewById<NavigationView>(R.id.nav_view)
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
 
@@ -184,12 +192,29 @@ class HomeActivity : AppCompatActivity() {
         // Dejar vacío para no realizar ninguna acción al presionar el botón de retroceso
     }
 
-    fun clearSharedPreferences() {
+    private fun clearSharedPreferences() {
         val sharedPreferences =
             getSharedPreferences("nombre_de_tu_preferencia", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.clear()
         editor.apply()
     }
+}
 
+class MarginItemDecoration(private val pageMarginPx: Int, private val offsetPx: Int) :
+    RecyclerView.ItemDecoration() {
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
+        val position = parent.getChildAdapterPosition(view)
+        val itemCount = state.itemCount
+
+        outRect.left = pageMarginPx
+        outRect.right = if (position == itemCount - 1) pageMarginPx else 0
+        outRect.top = offsetPx
+        outRect.bottom = offsetPx
+    }
 }

@@ -9,7 +9,7 @@ import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class LoginViewModel : ViewModel() {
-
+    
     private val repository = LoginRepository()
 
     // MUtableLiveData

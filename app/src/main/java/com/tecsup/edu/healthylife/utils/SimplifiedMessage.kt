@@ -9,13 +9,16 @@ object SimplifiedMessage {
         val jsonObject = JSONObject(stringMessage)
 
         try {
-            val jsonMessages = jsonObject.getJSONObject("message")
-            jsonMessages.keys().forEach { messages[it] = jsonMessages.getString(it) }
+            if (jsonObject.has("message")) {
+                val jsonMessages = jsonObject.getJSONObject("message")
+                jsonMessages.keys().forEach { messages[it] = jsonMessages.getString(it) }
+            } else {
+                messages["message"] = ""
+            }
         } catch (e: JSONException) {
-            messages["message"] = jsonObject.getString("message")
+            messages["message"] = ""
         }
 
         return messages
-
     }
 }
