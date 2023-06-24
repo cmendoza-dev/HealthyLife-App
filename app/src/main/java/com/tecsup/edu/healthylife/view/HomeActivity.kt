@@ -11,8 +11,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.android.volley.Request
@@ -27,7 +25,6 @@ import com.tecsup.edu.healthylife.R
 import com.tecsup.edu.healthylife.RecetasMedicasActivity
 import com.tecsup.edu.healthylife.adapter.SliderAdapter
 import com.tecsup.edu.healthylife.data.User
-import com.tecsup.edu.healthylife.login.LoginViewModel
 import org.json.JSONException
 import org.json.JSONObject
 import java.lang.Math.abs

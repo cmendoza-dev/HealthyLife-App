@@ -11,7 +11,5 @@ class UserRepository {
 
     suspend fun registerUser(user: User): Response<ResponseBody> {
         return apiService.registerUser(user)
-
-
     }
 }

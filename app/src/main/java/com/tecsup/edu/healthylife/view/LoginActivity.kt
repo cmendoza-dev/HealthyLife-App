@@ -57,7 +57,8 @@ class LoginActivity : AppCompatActivity() {
                 // Puedes navegar a la siguiente actividad o realizar otras acciones necesarias
                 // Ejemplo:
                 // El inicio de sesión fue exitoso
-                val name = "Juan" // Reemplaza 'Juan' con el nombre del usuario obtenido desde tu API o respuesta
+                val name =
+                    "Juan" // Reemplaza 'Juan' con el nombre del usuario obtenido desde tu API o respuesta
                 val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("userName", name)
                 startActivity(intent)

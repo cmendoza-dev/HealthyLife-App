@@ -10,7 +10,7 @@ import okhttp3.RequestBody
 import org.json.JSONObject
 
 object ApiCliente {
-    private const val BASE_URL = "http://192.168.1.9:8000/api/users/"
+    private const val BASE_URL = "http://192.168.43.109:8000/api/users/"
 
     suspend fun login(email: String, password: String): User? {
         val client = OkHttpClient()
