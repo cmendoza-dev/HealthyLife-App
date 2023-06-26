@@ -3,6 +3,7 @@ package com.tecsup.edu.healthylife.view
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -26,6 +27,8 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+
 
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
@@ -66,10 +69,24 @@ class RegisterActivity : AppCompatActivity() {
         userViewModel.registrationStatus.observe(this, Observer { isSuccessful ->
             if (isSuccessful) {
                 // Registro exitoso, puedes realizar alguna acción aquí
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             } else {
                 // Registro fallido, puedes mostrar un mensaje de error
+                val dialogBuilder = AlertDialog.Builder(this)
+                val inflater = layoutInflater
+                val dialogView = inflater.inflate(R.layout.dialog_error_registeruser, null)
+                dialogBuilder.setView(dialogView)
+
+                val dialog = dialogBuilder.create()
+                dialog.show()
+
+                val btnAceptar = dialogView.findViewById<Button>(R.id.btnAceptar)
+                btnAceptar.setOnClickListener {
+                    // Acciones al hacer clic en el botón "Aceptar"
+                    dialog.dismiss()
+                }
+                // Aquí puedes realizar las acciones correspondientes al inicio de sesión fallido
 
             }
         })

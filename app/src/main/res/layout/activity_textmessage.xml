@@ -22,7 +22,7 @@
             android:fontFamily="sans-serif-black"
             android:text="@string/textmessage"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/purple_700"
             android:textSize="28sp" />
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/contextmessage"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/purple_700"
             android:textSize="15sp"
 
             />
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Reenviar código"
-                android:textColor="@color/white"
+                android:textColor="@color/purple_700"
                 android:textSize="15sp" />
 
             <TextView
@@ -124,7 +124,7 @@
                 android:layout_marginTop="20dp"
                 android:autoLink="web"
                 android:text="Clic aquí"
-                android:textColor="@color/white"
+                android:textColor="@color/purple_700"
                 android:textSize="15sp" />
 
         </LinearLayout>

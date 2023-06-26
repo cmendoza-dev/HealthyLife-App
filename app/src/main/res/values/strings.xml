@@ -45,11 +45,13 @@
     <string name="edu">Correo</string>
     <string name="save">Guardar</string>
     <string name="generate">Generar</string>
-    <string name="registerdate">Registrar Cita</string>
+    <string name="makedate">Reservar cita</string>
     <string name="recetasmedicas">Recetas Médicas</string>
+    <string name="schedule">Cronograma</string>
+    <string name="selectime">Seleccionar hora</string>
     <string name="showplus">Ver más</string>
     <string name="todo">TODO</string>
-
+    <string name="makeappointment">Reservar una cita</string>
     <string-array name="carreras">
         <item>Administración de Datos</item>
         <item>Big Data y Ciencia de Datos</item>

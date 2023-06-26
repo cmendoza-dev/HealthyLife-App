@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -32,6 +34,13 @@
         <activity android:name=".view.RegisterActivity" />
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.HomeActivity" />
+        <activity android:name=".view.DetalleActivity1" />
+        <activity android:name=".view.DetalleActivity2" />
+        <activity android:name=".view.DetalleActivity3" />
+        <activity android:name=".view.DetalleActivity4" />
+        <activity android:name=".view.DetalleActivity5" />
+        <activity android:name=".view.DetalleActivity6" />
+        <activity android:name=".view.DetalleActivityDefault" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".DatingHistoryActivity" />
         <activity android:name=".RecetasMedicasActivity" />
@@ -54,6 +63,11 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_stat_notifications_active" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_api_key" />
+
     </application>
 
 </manifest>

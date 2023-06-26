@@ -26,9 +26,10 @@
         android:textColor="#ffffff" />
 
     <TextView
+        android:id="@+id/userEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="carlos.mendoza.s@tecsup.edu.pe"
+        android:text=""
         android:textColor="#ffffff" />
 
 

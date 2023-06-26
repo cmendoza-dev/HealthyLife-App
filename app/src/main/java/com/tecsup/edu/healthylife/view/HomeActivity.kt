@@ -2,37 +2,39 @@ package com.tecsup.edu.healthylife.view
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Rect
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.Volley
+import androidx.recyclerview.widget.SnapHelper
 import com.google.android.material.navigation.NavigationView
 import com.tecsup.edu.healthylife.AccountActivity
 import com.tecsup.edu.healthylife.DatingHistoryActivity
 import com.tecsup.edu.healthylife.GenerateDateActivity
 import com.tecsup.edu.healthylife.R
 import com.tecsup.edu.healthylife.RecetasMedicasActivity
-import com.tecsup.edu.healthylife.adapter.SliderAdapter
+import com.tecsup.edu.healthylife.adapter.UserAdapter
 import com.tecsup.edu.healthylife.data.User
-import org.json.JSONException
-import org.json.JSONObject
-import java.lang.Math.abs
+import com.tecsup.edu.healthylife.utils.ApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeActivity : AppCompatActivity() {
-    private lateinit var viewPager: ViewPager2
-    private lateinit var sliderAdapter: SliderAdapter
-    private val dataList: MutableList<User> = mutableListOf()
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: UserAdapter
+    private lateinit var snapHelper: SnapHelper
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,15 +42,31 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         supportActionBar?.hide()
 
-        val txtUserName = findViewById<TextView>(R.id.userName)
-        val userName = intent.getStringExtra("userName")
-        if (userName != null) {
-            txtUserName.text = userName
-        }
-
         val btnRightNav = findViewById<Button>(R.id.moreInfo)
         val navView = findViewById<NavigationView>(R.id.nav_view)
+
+
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Obtener referencias a las tarjetas
+        val card1 = findViewById<LinearLayout>(R.id.card1)
+        val card2 = findViewById<LinearLayout>(R.id.card2)
+        val card3 = findViewById<LinearLayout>(R.id.card3)
+        val card4 = findViewById<LinearLayout>(R.id.card4)
+        val card5 = findViewById<LinearLayout>(R.id.card5)
+        val card6 = findViewById<LinearLayout>(R.id.card6)
+
+        // Agregar clic listeners a las tarjetas
+        card1.setOnClickListener { changeCardColor(it) }
+        card2.setOnClickListener { changeCardColor(it) }
+        card3.setOnClickListener { changeCardColor(it) }
+        card4.setOnClickListener { changeCardColor(it) }
+        card5.setOnClickListener { changeCardColor(it) }
+        card6.setOnClickListener { changeCardColor(it) }
+
+
 
         btnRightNav.setOnClickListener {
             navView.isEnabled = true
@@ -57,63 +75,136 @@ class HomeActivity : AppCompatActivity() {
 
         configureNavigationDrawer()
 
-        val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.page_margin)
-        val offsetPx = resources.getDimensionPixelOffset(R.dimen.offset)
+        /*recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = GridLayoutManager(this, 3, RecyclerView.HORIZONTAL, false)
 
-        viewPager = findViewById(R.id.viewPager)
+    // Configurar el PagerSnapHelper
+        snapHelper = PagerSnapHelper()
+        snapHelper.attachToRecyclerView(recyclerView)*/
 
-        sliderAdapter = SliderAdapter(dataList) // Asegúrate de tener un adaptador válido
 
-        viewPager.apply {
-            adapter = sliderAdapter
-            addItemDecoration(MarginItemDecoration(pageMarginPx, offsetPx))
-            offscreenPageLimit = 1
-            setPageTransformer { page, position ->
-                val r = 1 - abs(position)
-                page.scaleY = 0.85f + r * 0.15f
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        // Configurar el LinearSnapHelper
+        snapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(recyclerView)
+
+
+        // Inicializar el adaptador con una lista vacía
+        adapter = UserAdapter(emptyList())
+        recyclerView.adapter = adapter
+
+        // Hacer la solicitud a la API y obtener los usuarios
+        val apiClient = ApiClient()
+        apiClient.getUsers(object : Callback<List<User>> {
+            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                if (response.isSuccessful) {
+                    val users = response.body()
+                    if (users != null) {
+                        // Filtrar los usuarios con id_user igual a 1
+                        val filteredUsers = users.filter { it.id_user == 1 }
+
+                        // Actualizar el adaptador con la lista de usuarios filtrados
+                        adapter = UserAdapter(filteredUsers)
+                        recyclerView.adapter = adapter
+                    }
+                }
             }
+
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
+                // Manejar el error de la solicitud
+            }
+        })
+
+
+    }
+
+    var selectedCard: LinearLayout? =
+        null // Variable para almacenar la tarjeta seleccionada actualmente
+
+    fun changeCardColor(view: View) {
+        val card = view as LinearLayout
+        val textColorSelected = Color.WHITE // Color del texto cuando está seleccionada
+        val textColorNormal = Color.BLACK // Color del texto en estado normal
+
+        val imageView = card.getChildAt(0) as AppCompatImageView // Obtener el AppCompatImageView
+        val textView =
+            card.getChildAt(1) as TextView // Obtener el TextView (suponiendo que está en la segunda posición)
+
+        if (selectedCard != null && selectedCard != card) {
+            // Deseleccionar la tarjeta anteriormente seleccionada
+            selectedCard!!.setBackgroundColor(Color.WHITE) // Color de fondo normal (transparente)
+            (selectedCard!!.getChildAt(1) as TextView).setTextColor(textColorNormal)
+            selectedCard!!.tag = null
         }
 
-        val apiUrl = "http://192.168.1.9:8000/api/users?id_user=1"
+        if (card.tag == null || card.tag.toString() != "selected") {
+            // La tarjeta no estaba seleccionada
+            card.setBackgroundColor(Color.parseColor("#6b5ad3")) // Color de fondo seleccionado
+            textView.setTextColor(textColorSelected)
+            card.tag = "selected"
+            selectedCard = card
 
-        val requestQueue: RequestQueue = Volley.newRequestQueue(this)
-        val jsonArrayRequest = JsonArrayRequest(
-            Request.Method.GET,
-            apiUrl,
-            null,
-            { response ->
-                try {
-                    for (i in 0 until response.length()) {
-                        val userObject: JSONObject = response.getJSONObject(i)
+            val cardId =
+                determineCardId(card) // Método para determinar el cardId de la tarjeta seleccionada
+            startDetailActivity(cardId) // Mostrar la actividad de detalle correspondiente
 
-                        val idUser: Int = userObject.getInt("id_user")
-                        val nombre: String = userObject.getString("nombre")
-                        val apellido: String = userObject.getString("apellido")
-                        val dni: Int = userObject.getInt("dni")
-                        val email: String = userObject.getString("email")
-                        val direccion: String = userObject.getString("direccion")
-                        val telefono: Int = userObject.getInt("telefono")
-                        val password: String = userObject.getString("password")
-                        val especialidad: String = userObject.getString("especialidad")
-
-                        val userData = User(
-                            idUser, nombre, apellido, dni, email, direccion,
-                            telefono, password, especialidad
-                        )
-                        dataList.add(userData)
-                    }
-
-                    sliderAdapter.notifyDataSetChanged()
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-            },
-            { error ->
-                error.printStackTrace()
-            })
-
-        requestQueue.add(jsonArrayRequest)
+        } else {
+            // La tarjeta estaba seleccionada, restaurar colores normales
+            card.setBackgroundColor(Color.WHITE) // Color de fondo normal (transparente)
+            textView.setTextColor(textColorNormal)
+            card.tag = null
+            selectedCard = null
+        }
     }
+
+    fun startDetailActivity(cardId: Int) {
+        val intent = Intent(this, getDetailActivityClass(cardId))
+        startActivity(intent)
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+    }
+
+    private fun determineCardId(card: LinearLayout): Int {
+        val cardIdString =
+            card.resources.getResourceEntryName(card.id) // Obtener el ID de la tarjeta como String (ejemplo: "card1")
+        val cardId =
+            parseCardId(cardIdString) // Método para convertir el String del ID a un valor numérico
+
+        return cardId
+    }
+
+    private fun parseCardId(cardIdString: String): Int {
+        // Aquí debes implementar la lógica para convertir el String del ID a un valor numérico
+        // Puedes extraer el número del String, eliminar cualquier prefijo o sufijo específico, etc.
+        // Por ejemplo, si todos los ID de las tarjetas tienen el prefijo "card" seguido de un número, puedes hacer lo siguiente:
+        val prefix = "card"
+        val cardNumberString = cardIdString.removePrefix(prefix)
+        val cardId = cardNumberString.toIntOrNull()
+
+        return cardId
+            ?: 0 // Valor predeterminado en caso de que no se pueda obtener un ID numérico válido
+    }
+
+
+    fun getDetailActivityClass(cardId: Int): Class<*> {
+        return when (cardId) {
+            1 -> DetalleActivity1::class.java
+            2 -> DetalleActivity2::class.java
+            3 -> DetalleActivity3::class.java
+            4 -> DetalleActivity4::class.java
+            5 -> DetalleActivity5::class.java
+            6 -> DetalleActivity6::class.java
+
+            // Agrega más casos para cada tarjeta y su respectiva actividad de detalle
+            //else -> DetalleActivityDefault::class.java // Actividad de detalle predeterminada en caso de no haber coincidencia
+            else -> {
+                DetalleActivityDefault::class.java
+            }
+        }
+    }
+
 
     private fun configureNavigationDrawer() {
         val navView = findViewById<NavigationView>(R.id.nav_view)
@@ -198,20 +289,4 @@ class HomeActivity : AppCompatActivity() {
     }
 }
 
-class MarginItemDecoration(private val pageMarginPx: Int, private val offsetPx: Int) :
-    RecyclerView.ItemDecoration() {
-    override fun getItemOffsets(
-        outRect: Rect,
-        view: View,
-        parent: RecyclerView,
-        state: RecyclerView.State
-    ) {
-        val position = parent.getChildAdapterPosition(view)
-        val itemCount = state.itemCount
 
-        outRect.left = pageMarginPx
-        outRect.right = if (position == itemCount - 1) pageMarginPx else 0
-        outRect.top = offsetPx
-        outRect.bottom = offsetPx
-    }
-}

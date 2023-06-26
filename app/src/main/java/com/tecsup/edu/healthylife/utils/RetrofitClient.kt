@@ -16,4 +16,10 @@ object RetrofitClient {
     fun create(): ApiService {
         return retrofit.create(ApiService::class.java)
     }
+
+    val citasApiService: CitasApiService by lazy {
+        retrofit.create(CitasApiService::class.java)
+    }
+
+
 }

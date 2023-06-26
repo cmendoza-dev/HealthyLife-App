@@ -1,6 +1,5 @@
 package com.tecsup.edu.healthylife.view
 
-import LoginViewModel
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -12,18 +11,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.tecsup.edu.healthylife.R
 import com.tecsup.edu.healthylife.ResetPasswordActivity
+import com.tecsup.edu.healthylife.view_model.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var loginViewModel: LoginViewModel
-    private lateinit var editTextEmail: TextInputEditText
-    private lateinit var editTextPassword: TextInputEditText
-    private lateinit var buttonLogin: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         supportActionBar?.hide()
 
@@ -39,10 +34,13 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
-        editTextEmail = findViewById(R.id.emailEt)
-        editTextPassword = findViewById(R.id.passwordEt)
-        buttonLogin = findViewById(R.id.btnLogin)
+        val editTextEmail: TextInputEditText = findViewById(R.id.emailEt)
+        val editTextPassword: TextInputEditText = findViewById(R.id.passwordEt)
+        val buttonLogin: Button = findViewById(R.id.btnLogin)
+
+
 
         buttonLogin.setOnClickListener {
             val email = editTextEmail.text.toString()
@@ -50,30 +48,27 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.login(email, password)
         }
 
-
-        loginViewModel.loginResult.observe(this, Observer { loggedIn ->
-            if (loggedIn) {
-                // El inicio de sesión fue exitoso
-                // Puedes navegar a la siguiente actividad o realizar otras acciones necesarias
-                // Ejemplo:
-                // El inicio de sesión fue exitoso
-                val name =
-                    "Juan" // Reemplaza 'Juan' con el nombre del usuario obtenido desde tu API o respuesta
+        loginViewModel.loginSuccessLiveData.observe(this, Observer { isAuthenticated ->
+            if (isAuthenticated) {
                 val intent = Intent(this, HomeActivity::class.java)
-                intent.putExtra("userName", name)
                 startActivity(intent)
 
+                // Aquí puedes realizar las acciones correspondientes al inicio de sesión exitoso
             } else {
-                // El inicio de sesión falló
-                // Puedes mostrar un mensaje de error o realizar otras acciones necesarias
-                AlertDialog.Builder(this)
-                    .setTitle("Error de inicio de sesión")
-                    .setMessage("El inicio de sesión ha fallado. Por favor, verifica tus credenciales.")
-                    .setPositiveButton("Aceptar") { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .show()
+                val dialogBuilder = AlertDialog.Builder(this)
+                val inflater = layoutInflater
+                val dialogView = inflater.inflate(R.layout.dialog_error_loginuser, null)
+                dialogBuilder.setView(dialogView)
 
+                val dialog = dialogBuilder.create()
+                dialog.show()
+
+                val btnAceptar = dialogView.findViewById<Button>(R.id.btnAceptar)
+                btnAceptar.setOnClickListener {
+                    // Acciones al hacer clic en el botón "Aceptar"
+                    dialog.dismiss()
+                }
+                // Aquí puedes realizar las acciones correspondientes al inicio de sesión fallido
             }
         })
     }
