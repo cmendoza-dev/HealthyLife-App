@@ -224,28 +224,34 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:id="@+id/layout_time_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/time_button_yellow"
+                            android:background="@drawable/time_button_white"
                             android:orientation="horizontal"
                             android:padding="8dp">
 
                             <ImageView
+                                android:tag="@+id/iconImageTag"
+                                android:id="@+id/iconImageVie1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:paddingEnd="5dp"
-                                android:src="@drawable/time_white" />
+                                android:src="@drawable/time_blue" />
 
                             <TextView
+                                android:id="@+id/text_view_time_1"
+                                android:tag="@+id/textTag"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="11:00 PM"
-                                android:textColor="@color/white"
+                                android:text="11:00 AM"
+                                android:textColor="@color/gris_5f6"
                                 android:textSize="16sp" />
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/layout_time_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -254,6 +260,7 @@
                             android:padding="8dp">
 
                             <ImageView
+                                android:id="@+id/iconImageVie2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -261,6 +268,7 @@
                                 android:src="@drawable/time_blue" />
 
                             <TextView
+                                android:id="@+id/text_view_time_2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="12:00 PM"
@@ -269,6 +277,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/layout_time_3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -277,6 +286,7 @@
                             android:padding="8dp">
 
                             <ImageView
+                                android:id="@+id/iconImageVie3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -284,6 +294,7 @@
                                 android:src="@drawable/time_blue" />
 
                             <TextView
+                                android:id="@+id/text_view_time_3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="01:00 PM"
@@ -300,6 +311,7 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:id="@+id/layout_time_4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/time_button_white"
@@ -307,6 +319,7 @@
                             android:padding="8dp">
 
                             <ImageView
+                                android:id="@+id/iconImageVie4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -314,6 +327,7 @@
                                 android:src="@drawable/time_blue" />
 
                             <TextView
+                                android:id="@+id/text_view_time_4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="02:30 PM"
@@ -376,6 +390,7 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:id="@+id/layout_time_5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/time_button_white"
@@ -383,6 +398,7 @@
                             android:padding="8dp">
 
                             <ImageView
+                                android:id="@+id/iconImageVie5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -390,6 +406,7 @@
                                 android:src="@drawable/time_blue" />
 
                             <TextView
+                                android:id="@+id/text_view_time_5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="04:15 PM"
@@ -398,6 +415,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/layout_time_6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -406,6 +424,7 @@
                             android:padding="8dp">
 
                             <ImageView
+                                android:id="@+id/iconImageVie6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
@@ -413,6 +432,7 @@
                                 android:src="@drawable/time_blue" />
 
                             <TextView
+                                android:id="@+id/text_view_time_6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="04:30 PM"

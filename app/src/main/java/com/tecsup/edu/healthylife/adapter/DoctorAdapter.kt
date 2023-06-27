@@ -33,9 +33,12 @@ class DoctorAdapter(private val users: List<User>) :
         filteredUsers = if (searchText.isNotEmpty()) {
             users.filter { user ->
                 user.id_user == 1 &&
-                        (user.nombre.toLowerCase(Locale.getDefault()).contains(searchText.toLowerCase(Locale.getDefault())) ||
-                                user.apellido.toLowerCase(Locale.getDefault()).contains(searchText.toLowerCase(Locale.getDefault())) ||
-                                user.especialidad.toLowerCase(Locale.getDefault()).contains(searchText.toLowerCase(Locale.getDefault())))
+                        (user.nombre.toLowerCase(Locale.getDefault())
+                            .contains(searchText.toLowerCase(Locale.getDefault())) ||
+                                user.apellido.toLowerCase(Locale.getDefault())
+                                    .contains(searchText.toLowerCase(Locale.getDefault())) ||
+                                user.especialidad.toLowerCase(Locale.getDefault())
+                                    .contains(searchText.toLowerCase(Locale.getDefault())))
             }
         } else {
             users.filter { user ->

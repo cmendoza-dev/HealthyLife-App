@@ -75,14 +75,6 @@ class HomeActivity : AppCompatActivity() {
 
         configureNavigationDrawer()
 
-        /*recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = GridLayoutManager(this, 3, RecyclerView.HORIZONTAL, false)
-
-    // Configurar el PagerSnapHelper
-        snapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(recyclerView)*/
-
-
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -288,5 +280,6 @@ class HomeActivity : AppCompatActivity() {
         editor.apply()
     }
 }
+
 
 

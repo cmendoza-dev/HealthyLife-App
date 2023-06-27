@@ -3,6 +3,7 @@ package com.tecsup.edu.healthylife.view
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -28,7 +29,11 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-
+        val linkTextView = findViewById<TextView>(R.id.linkTextView)
+        linkTextView.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 

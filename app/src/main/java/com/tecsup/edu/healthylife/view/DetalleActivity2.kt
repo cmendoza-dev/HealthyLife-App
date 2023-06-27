@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
@@ -36,7 +35,7 @@ class DetalleActivity2 : AppCompatActivity() {
 
         val buttonAtras: Button = findViewById(R.id.atras)
         buttonAtras.setOnClickListener {
-            finish() // Cierra la actividad actual y vuelve a la actividad anterior
+            finish() // Cierra la actividad actual
         }
 
         recyclerView = findViewById(R.id.recyclerView)
@@ -87,9 +86,12 @@ class DetalleActivity2 : AppCompatActivity() {
     private fun filterUsers(searchText: String) {
         val filteredUsers = if (searchText.isNotEmpty()) {
             allUsers.filter { user ->
-                user.nombre.toLowerCase(Locale.getDefault()).contains(searchText.toLowerCase(Locale.getDefault())) ||
-                        user.apellido.toLowerCase(Locale.getDefault()).contains(searchText.toLowerCase(Locale.getDefault())) ||
-                        user.especialidad.toLowerCase(Locale.getDefault()).contains(searchText.toLowerCase(Locale.getDefault()))
+                user.nombre.toLowerCase(Locale.getDefault())
+                    .contains(searchText.toLowerCase(Locale.getDefault())) ||
+                        user.apellido.toLowerCase(Locale.getDefault())
+                            .contains(searchText.toLowerCase(Locale.getDefault())) ||
+                        user.especialidad.toLowerCase(Locale.getDefault())
+                            .contains(searchText.toLowerCase(Locale.getDefault()))
             }
         } else {
             allUsers

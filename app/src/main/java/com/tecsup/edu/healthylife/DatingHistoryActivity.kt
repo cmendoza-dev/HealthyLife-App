@@ -2,23 +2,41 @@ package com.tecsup.edu.healthylife
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.tecsup.edu.healthylife.adapter.CitasAdapter
+import com.tecsup.edu.healthylife.view_model.CitasViewModel
+
 
 class DatingHistoryActivity : AppCompatActivity() {
+    private lateinit var viewModel: CitasViewModel
+    private lateinit var citasAdapter: CitasAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_datinghistory)
+        setContentView(R.layout.activity_citas)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = getString(R.string.dating)
-        val drawable = resources.getDrawable(R.color.lila_5f5)
-        supportActionBar?.setBackgroundDrawable(drawable)
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-    }
+        citasAdapter = CitasAdapter(emptyList(), emptyList())
+        recyclerView.adapter = citasAdapter
 
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
+        viewModel = ViewModelProvider(this).get(CitasViewModel::class.java)
+        viewModel.citasList.observe(this) { citas ->
+            citasAdapter.citasList = citas
+            citasAdapter.notifyDataSetChanged()
+        }
+
+        viewModel.doctoresList.observe(this, Observer { doctores ->
+            citasAdapter.doctoresList = doctores
+            citasAdapter.notifyDataSetChanged()
+        })
+
+        viewModel.fetchData()
     }
 }
+

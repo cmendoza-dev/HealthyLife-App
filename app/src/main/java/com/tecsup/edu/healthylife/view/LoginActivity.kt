@@ -11,9 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.tecsup.edu.healthylife.R
 import com.tecsup.edu.healthylife.ResetPasswordActivity
+
 import com.tecsup.edu.healthylife.view_model.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,8 +42,6 @@ class LoginActivity : AppCompatActivity() {
         val editTextPassword: TextInputEditText = findViewById(R.id.passwordEt)
         val buttonLogin: Button = findViewById(R.id.btnLogin)
 
-
-
         buttonLogin.setOnClickListener {
             val email = editTextEmail.text.toString()
             val password = editTextPassword.text.toString()
@@ -50,26 +50,30 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel.loginSuccessLiveData.observe(this, Observer { isAuthenticated ->
             if (isAuthenticated) {
+                // inicio de sesión exitoso
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
 
-                // Aquí puedes realizar las acciones correspondientes al inicio de sesión exitoso
             } else {
-                val dialogBuilder = AlertDialog.Builder(this)
-                val inflater = layoutInflater
-                val dialogView = inflater.inflate(R.layout.dialog_error_loginuser, null)
-                dialogBuilder.setView(dialogView)
-
-                val dialog = dialogBuilder.create()
-                dialog.show()
-
-                val btnAceptar = dialogView.findViewById<Button>(R.id.btnAceptar)
-                btnAceptar.setOnClickListener {
-                    // Acciones al hacer clic en el botón "Aceptar"
-                    dialog.dismiss()
-                }
-                // Aquí puedes realizar las acciones correspondientes al inicio de sesión fallido
+                mostrarMensajeError()
             }
         })
+    }
+
+    private fun mostrarMensajeError() {
+        // Muestra un mensaje de error al usuario
+        val dialogBuilder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_error_loginuser, null)
+        dialogBuilder.setView(dialogView)
+
+        val dialog = dialogBuilder.create()
+        dialog.show()
+
+        val btnAceptar = dialogView.findViewById<Button>(R.id.btnAceptar)
+        btnAceptar.setOnClickListener {
+            // Acciones al hacer clic en el botón "Aceptar"
+            dialog.dismiss()
+        }
     }
 }

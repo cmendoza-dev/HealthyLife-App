@@ -17,6 +17,15 @@ class LoginViewModel : ViewModel() {
 
     private val client: OkHttpClient = OkHttpClient()
 
+
+    // Define a variable to hold the authenticated user
+    private var authenticatedUser: User? = null
+
+    // Implement the method to retrieve the authenticated user
+    fun getAuthenticatedUser(): User? {
+        return authenticatedUser
+    }
+
     fun login(email: String, password: String) {
         val url = "http://192.168.43.109:8000/api/users/"
         val request = Request.Builder()
@@ -33,6 +42,10 @@ class LoginViewModel : ViewModel() {
                 }
 
                 loginSuccessLiveData.postValue(isAuthenticated)
+
+                // obtén el usuario correspondiente de la lista users y asigna ese usuario al userLiveData.
+
+
             }
 
             override fun onFailure(call: Call, e: IOException) {

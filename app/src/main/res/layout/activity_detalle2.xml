@@ -50,8 +50,8 @@
                 android:drawablePadding="4dp"
                 android:hint="@string/search"
                 android:paddingStart="8dp"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -90,33 +90,31 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
+
                                 <TextView
                                     android:id="@+id/tvDoctorCercano"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="5dp"
-                                    android:layout_alignParentStart="true"
                                     android:text="Doctor cercano"
                                     android:textColor="@color/gris_5f6"
-                                    android:textStyle="bold"
-                                    android:textSize="20sp" />
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/tvVerTodos"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="5dp"
-                                    android:layout_alignParentEnd="true"
                                     android:text="Ver todos"
                                     android:textColor="@color/gris_5f6"
-                                    android:textStyle="bold"
-                                    android:textSize="18sp" />
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
                             </RelativeLayout>
-
-
-
 
 
                             <androidx.recyclerview.widget.RecyclerView
@@ -132,11 +130,6 @@
 
                 </LinearLayout>
 
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/viewPager"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
 
             </LinearLayout>
 
