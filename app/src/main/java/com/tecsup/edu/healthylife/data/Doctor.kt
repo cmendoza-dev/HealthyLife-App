@@ -1,7 +1,8 @@
 package com.tecsup.edu.healthylife.data
 
 data class Doctor(
-    val idUser: Int,
+    val id: Int,
+    val id_user: Int,
     val nombre: String,
     val apellido: String,
     val dni: Int,

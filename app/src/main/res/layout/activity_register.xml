@@ -22,6 +22,16 @@
             android:gravity="center_horizontal|top"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/register"
+                android:textColor="@color/purple_700"
+                android:textSize="28sp" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/NameTil"
                 android:layout_width="match_parent"

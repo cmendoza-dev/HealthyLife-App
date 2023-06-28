@@ -26,4 +26,5 @@ class ApiClient {
         val call = apiService.getUsers()
         call.enqueue(callback)
     }
+
 }

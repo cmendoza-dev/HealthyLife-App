@@ -13,11 +13,8 @@ class UserAdapter(private val users: List<User>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
-        val userViewHolder = UserViewHolder(view)
-        userViewHolder.txtName = view.findViewById(R.id.txtName)
-        return userViewHolder
+        return UserViewHolder(view)
     }
-
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = users[position]
@@ -29,12 +26,11 @@ class UserAdapter(private val users: List<User>) :
     }
 
     inner class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        lateinit var txtName: TextView
+        private val txtName: TextView = itemView.findViewById(R.id.txtName)
 
         fun bind(user: User) {
             val fullName = "${user.nombre} \n ${user.apellido}"
             txtName.text = fullName
         }
     }
-
 }

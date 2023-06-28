@@ -88,7 +88,7 @@
 
 
         <Button
-            android:id="@+id/btnMakeAppointment"
+            android:id="@+id/btnMakeAppointmentFromUser"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"

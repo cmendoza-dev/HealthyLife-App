@@ -17,14 +17,13 @@ class AccountActivity : AppCompatActivity() {
     private lateinit var addressTextView: TextView
     private lateinit var passwordTextView: TextView
 
+    private lateinit var loginViewModel: LoginViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account)
 
         supportActionBar?.hide()
-
-        val loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-
 
         nombreTextView = findViewById(R.id.nameUser)
         emailTextView = findViewById(R.id.emailUser)
@@ -33,27 +32,34 @@ class AccountActivity : AppCompatActivity() {
         dniTextView = findViewById(R.id.dniUser)
         passwordTextView = findViewById(R.id.passwordUser)
 
-        val authenticatedUser: User? = loginViewModel.getAuthenticatedUser()
-
-
-
-        authenticatedUser?.let {
-            nombreTextView.text = "${it.nombre} ${it.apellido}"
-            emailTextView.text = it.email
-            celularTextView.text = it.telefono.toString()
-            addressTextView.text = it.direccion
-            dniTextView.text = it.dni.toString()
-            passwordTextView.text = it.password
-        }
-
-
         val buttonAtras: Button = findViewById(R.id.atras)
         buttonAtras.setOnClickListener {
-            finish() // Cierra la actividad actual y vuelve a la actividad anterior
+            finish()
         }
+
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        loginViewModel.setContext(this)
+
+        val user: User? = loginViewModel.getAuthenticatedUser()
+        loadUserData(user)
 
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        val user: User? = loginViewModel.getAuthenticatedUser()
+        loadUserData(user)
+    }
 
+    private fun loadUserData(user: User?) {
+        if (user != null) {
+            nombreTextView.text = "${user.nombre} ${user.apellido}"
+            emailTextView.text = user.email
+            celularTextView.text = user.telefono.toString()
+            dniTextView.text = user.dni.toString()
+            addressTextView.text = user.direccion
+            passwordTextView.text = user.password
+        }
+    }
 }

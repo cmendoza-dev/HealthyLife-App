@@ -38,7 +38,7 @@
             app:layout_constraintTop_toBottomOf="@id/textView2">
 
             <EditText
-                android:id="@+id/nameEditText"
+                android:id="@+id/searchFromEspeciality"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
@@ -50,6 +50,7 @@
                 android:drawablePadding="4dp"
                 android:hint="@string/search"
                 android:paddingStart="8dp"
+                android:textColor="@color/white"
                 android:textColorHint="@color/white" />
 
             <LinearLayout
@@ -86,11 +87,40 @@
                             android:layout_height="match_parent"
                             android:orientation="vertical">
 
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recyclerViewRecipes"
+                            <RelativeLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tvDoctorCercano"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Doctores disponibles"
+                                    android:textColor="@color/gris_5f6"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvVerTodos"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Ver todos"
+                                    android:textColor="@color/gris_5f6"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:orientation="horizontal" />
 
 
@@ -99,6 +129,7 @@
                     </RelativeLayout>
 
                 </LinearLayout>
+
 
             </LinearLayout>
 
@@ -112,7 +143,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-black"
             android:gravity="center"
-            android:text="@string/prescriptions"
+            android:text="@string/makedate"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

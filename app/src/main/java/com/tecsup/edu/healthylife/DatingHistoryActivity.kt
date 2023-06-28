@@ -2,7 +2,6 @@ package com.tecsup.edu.healthylife
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,10 +30,10 @@ class DatingHistoryActivity : AppCompatActivity() {
             citasAdapter.notifyDataSetChanged()
         }
 
-        viewModel.doctoresList.observe(this, Observer { doctores ->
+        viewModel.doctoresList.observe(this) { doctores ->
             citasAdapter.doctoresList = doctores
             citasAdapter.notifyDataSetChanged()
-        })
+        }
 
         viewModel.fetchData()
     }

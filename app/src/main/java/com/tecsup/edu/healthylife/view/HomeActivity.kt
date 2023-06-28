@@ -10,7 +10,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -113,15 +112,15 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    var selectedCard: LinearLayout? =
+    private var selectedCard: LinearLayout? =
         null // Variable para almacenar la tarjeta seleccionada actualmente
 
-    fun changeCardColor(view: View) {
+    private fun changeCardColor(view: View) {
         val card = view as LinearLayout
         val textColorSelected = Color.WHITE // Color del texto cuando está seleccionada
         val textColorNormal = Color.BLACK // Color del texto en estado normal
 
-        val imageView = card.getChildAt(0) as AppCompatImageView // Obtener el AppCompatImageView
+
         val textView =
             card.getChildAt(1) as TextView // Obtener el TextView (suponiendo que está en la segunda posición)
 
@@ -152,7 +151,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun startDetailActivity(cardId: Int) {
+    private fun startDetailActivity(cardId: Int) {
         val intent = Intent(this, getDetailActivityClass(cardId))
         startActivity(intent)
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
@@ -161,10 +160,8 @@ class HomeActivity : AppCompatActivity() {
     private fun determineCardId(card: LinearLayout): Int {
         val cardIdString =
             card.resources.getResourceEntryName(card.id) // Obtener el ID de la tarjeta como String (ejemplo: "card1")
-        val cardId =
-            parseCardId(cardIdString) // Método para convertir el String del ID a un valor numérico
 
-        return cardId
+        return parseCardId(cardIdString)
     }
 
     private fun parseCardId(cardIdString: String): Int {
@@ -207,7 +204,7 @@ class HomeActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.date -> {
                     Toast.makeText(this, "Reservar cita", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, GenerateDateActivity::class.java)
+                    val intent = Intent(this, MakeDateFromUserActivity::class.java)
                     startActivity(intent)
                     true
                 }
@@ -268,8 +265,9 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        // Dejar vacío para no realizar ninguna acción al presionar el botón de retroceso
+
     }
 
     private fun clearSharedPreferences() {

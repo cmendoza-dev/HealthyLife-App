@@ -29,13 +29,13 @@ class CitasViewModel : ViewModel() {
             Log.d("CitasViewModel", "Tamaño de doctores: ${doctores.size}")
 
             citas.forEach { cita ->
-                val doctor = doctores.find { it.idUser == cita.id_doctor }
+                val doctor = doctores.find { it.id == cita.id_doctor }
                 if (doctor != null) {
                     Log.d(
                         "CitasViewModel",
                         "Cita: ${cita.id_doctor}, Doctor: ${doctor.nombre} ${doctor.apellido}"
                     )
-                    cita.id_doctor = doctor.idUser
+                    cita.id_doctor = doctor.id
                 } else {
                     Log.e("CitasViewModel", "No se encontró el doctor para la cita")
                 }

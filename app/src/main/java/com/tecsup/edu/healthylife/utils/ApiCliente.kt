@@ -26,4 +26,5 @@ object ApiCliente {
     val citasApiService: CitasApiService by lazy {
         retrofit.create(CitasApiService::class.java)
     }
+
 }

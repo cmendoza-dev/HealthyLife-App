@@ -1,7 +1,10 @@
 package com.tecsup.edu.healthylife.view_model
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.gson.Gson
 import com.tecsup.edu.healthylife.data.User
 import okhttp3.Call
 import okhttp3.Callback
@@ -14,16 +17,25 @@ import java.io.IOException
 
 class LoginViewModel : ViewModel() {
     val loginSuccessLiveData: MutableLiveData<Boolean> = MutableLiveData()
+    val authenticatedUserLiveData: MutableLiveData<User?> = MutableLiveData()
 
+    private lateinit var context: Context
     private val client: OkHttpClient = OkHttpClient()
 
+    fun setContext(context: Context) {
+        this.context = context
+    }
 
-    // Define a variable to hold the authenticated user
-    private var authenticatedUser: User? = null
-
-    // Implement the method to retrieve the authenticated user
     fun getAuthenticatedUser(): User? {
-        return authenticatedUser
+        val userJson = getSharedPreferences()?.getString("user", null)
+        return userJson?.let {
+            Gson().fromJson(it, User::class.java)
+        }
+    }
+
+    fun setAuthenticatedUser(user: User) {
+        val userJson = Gson().toJson(user)
+        getSharedPreferences()?.edit()?.putString("user", userJson)?.apply()
     }
 
     fun login(email: String, password: String) {
@@ -37,15 +49,19 @@ class LoginViewModel : ViewModel() {
                 val responseBody = response.body?.string()
                 val users = parseUsers(responseBody)
 
-                val isAuthenticated = users.any { user ->
+                val authenticatedUser = users.find { user ->
                     user.email == email && user.password == password
                 }
 
-                loginSuccessLiveData.postValue(isAuthenticated)
+                if (authenticatedUser != null) {
+                    authenticatedUserLiveData.postValue(authenticatedUser)
+                    loginSuccessLiveData.postValue(true)
 
-                // obtén el usuario correspondiente de la lista users y asigna ese usuario al userLiveData.
-
-
+                    // Guardar el usuario autenticado en el ViewModel
+                    setAuthenticatedUser(authenticatedUser)
+                } else {
+                    loginSuccessLiveData.postValue(false)
+                }
             }
 
             override fun onFailure(call: Call, e: IOException) {
@@ -64,6 +80,7 @@ class LoginViewModel : ViewModel() {
                 for (i in 0 until jsonArray.length()) {
                     val jsonUser = jsonArray.getJSONObject(i)
 
+                    val id = jsonUser.getInt("id")
                     val idUser = jsonUser.getInt("id_user")
                     val nombre = jsonUser.getString("nombre")
                     val apellido = jsonUser.getString("apellido")
@@ -75,6 +92,7 @@ class LoginViewModel : ViewModel() {
                     val especialidad = jsonUser.getString("especialidad")
 
                     val user = User(
+                        id,
                         idUser,
                         nombre,
                         apellido,
@@ -95,5 +113,8 @@ class LoginViewModel : ViewModel() {
 
         return users
     }
-}
 
+    private fun getSharedPreferences(): SharedPreferences? {
+        return context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+    }
+}

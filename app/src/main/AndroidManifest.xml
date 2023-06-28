@@ -40,6 +40,7 @@
         <activity android:name=".view.DetalleActivity4" />
         <activity android:name=".view.DetalleActivity5" />
         <activity android:name=".view.DetalleActivity6" />
+        <activity android:name=".view.MakeDateFromUserActivity" />
         <activity android:name=".view.DetalleActivityDefault" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".DatingHistoryActivity" />

@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.tecsup.edu.healthylife.R
 import com.tecsup.edu.healthylife.ResetPasswordActivity
-
 import com.tecsup.edu.healthylife.view_model.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -37,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        loginViewModel.setContext(this)
 
         val editTextEmail: TextInputEditText = findViewById(R.id.emailEt)
         val editTextPassword: TextInputEditText = findViewById(R.id.passwordEt)
@@ -50,10 +50,8 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel.loginSuccessLiveData.observe(this, Observer { isAuthenticated ->
             if (isAuthenticated) {
-                // inicio de sesión exitoso
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
-
             } else {
                 mostrarMensajeError()
             }
@@ -61,7 +59,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun mostrarMensajeError() {
-        // Muestra un mensaje de error al usuario
         val dialogBuilder = AlertDialog.Builder(this)
         val inflater = layoutInflater
         val dialogView = inflater.inflate(R.layout.dialog_error_loginuser, null)
@@ -72,7 +69,6 @@ class LoginActivity : AppCompatActivity() {
 
         val btnAceptar = dialogView.findViewById<Button>(R.id.btnAceptar)
         btnAceptar.setOnClickListener {
-            // Acciones al hacer clic en el botón "Aceptar"
             dialog.dismiss()
         }
     }

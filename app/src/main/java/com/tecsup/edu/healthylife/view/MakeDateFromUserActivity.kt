@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.tecsup.edu.healthylife.R
-import com.tecsup.edu.healthylife.adapter.DoctorAdapter
+import com.tecsup.edu.healthylife.adapter.DoctorSearchAdapter
 import com.tecsup.edu.healthylife.data.User
 import com.tecsup.edu.healthylife.utils.ApiClient
 import retrofit2.Call
@@ -19,10 +19,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.Locale
 
-class DetalleActivity2 : AppCompatActivity() {
+class MakeDateFromUserActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: DoctorAdapter
+    private lateinit var adapter: DoctorSearchAdapter
     private lateinit var snapHelper: SnapHelper
     private lateinit var searchEditText: EditText
 
@@ -30,7 +30,7 @@ class DetalleActivity2 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detalle2)
+        setContentView(R.layout.activity_makedatefromuser)
         supportActionBar?.hide()
 
         val buttonAtras: Button = findViewById(R.id.atras)
@@ -46,17 +46,16 @@ class DetalleActivity2 : AppCompatActivity() {
         snapHelper.attachToRecyclerView(recyclerView)
 
         // Inicializar el adaptador con una lista vacía
-        adapter = DoctorAdapter(emptyList())
+        adapter = DoctorSearchAdapter(emptyList())
         recyclerView.adapter = adapter
 
-
-        searchEditText = findViewById(R.id.searchEditText)
+        searchEditText = findViewById(R.id.searchFromEspeciality)
         searchEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                filterUsers(s.toString())
+                filterDoctorSearch(s.toString())
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -86,15 +85,11 @@ class DetalleActivity2 : AppCompatActivity() {
 
     }
 
-    private fun filterUsers(searchText: String) {
+    private fun filterDoctorSearch(searchText: String) {
         val filteredUsers = if (searchText.isNotEmpty()) {
             allUsers.filter { user ->
-                user.nombre.toLowerCase(Locale.getDefault())
-                    .contains(searchText.toLowerCase(Locale.getDefault())) ||
-                        user.apellido.toLowerCase(Locale.getDefault())
-                            .contains(searchText.toLowerCase(Locale.getDefault())) ||
-                        user.especialidad.toLowerCase(Locale.getDefault())
-                            .contains(searchText.toLowerCase(Locale.getDefault()))
+                user.especialidad.lowercase(Locale.getDefault())
+                    .contains(searchText.lowercase(Locale.getDefault()))
             }
         } else {
             allUsers
@@ -104,7 +99,7 @@ class DetalleActivity2 : AppCompatActivity() {
     }
 
     private fun updateAdapter(users: List<User>) {
-        adapter = DoctorAdapter(users)
+        adapter = DoctorSearchAdapter(users)
         recyclerView.adapter = adapter
     }
 }

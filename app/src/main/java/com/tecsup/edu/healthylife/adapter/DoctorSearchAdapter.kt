@@ -12,8 +12,8 @@ import com.tecsup.edu.healthylife.R
 import com.tecsup.edu.healthylife.data.User
 import java.util.Locale
 
-class DoctorAdapter(private val users: List<User>) :
-    RecyclerView.Adapter<DoctorAdapter.UserViewHolder>() {
+class DoctorSearchAdapter(private val users: List<User>) :
+    RecyclerView.Adapter<DoctorSearchAdapter.UserViewHolder>() {
 
     private var isFiltered = false
     private var filteredUsers: List<User> = emptyList()
@@ -35,13 +35,8 @@ class DoctorAdapter(private val users: List<User>) :
     fun filterUsers(searchText: String) {
         filteredUsers = if (searchText.isNotEmpty()) {
             users.filter { user ->
-                user.id_user == 1 &&
-                        (user.nombre.lowercase(Locale.getDefault())
-                            .contains(searchText.lowercase(Locale.getDefault())) ||
-                                user.apellido.lowercase(Locale.getDefault())
-                                    .contains(searchText.lowercase(Locale.getDefault())) ||
-                                user.especialidad.lowercase(Locale.getDefault())
-                                    .contains(searchText.lowercase(Locale.getDefault())))
+                user.id_user == 1 && user.especialidad.lowercase(Locale.getDefault())
+                    .contains(searchText.lowercase(Locale.getDefault()))
             }
         } else {
             users.filter { user ->
@@ -67,11 +62,9 @@ class DoctorAdapter(private val users: List<User>) :
                 val context = itemView.context
                 val intent = Intent(context, GenerateDateActivity::class.java)
                 val fullName = "Dr. ${user.nombre} ${user.apellido}"
-                intent.putExtra("idDoctor", user.id)
-                intent.putExtra("nameDoctor", fullName)
-                intent.putExtra("doctorSpecialty", user.especialidad)
+                intent.putExtra("nombreUsuario", fullName)
+                intent.putExtra("especialidadUsuario", user.especialidad)
                 context.startActivity(intent)
-
             }
         }
 
@@ -84,4 +77,3 @@ class DoctorAdapter(private val users: List<User>) :
         }
     }
 }
-

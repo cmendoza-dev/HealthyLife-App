@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
@@ -13,10 +14,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.tecsup.edu.healthylife.data.Cita
+import com.tecsup.edu.healthylife.data.User
 import com.tecsup.edu.healthylife.view_model.CitaViewModel
+import com.tecsup.edu.healthylife.view_model.LoginViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -29,12 +31,14 @@ class GenerateDateActivity : AppCompatActivity() {
 
     private lateinit var citaViewModel: CitaViewModel
 
+
     private lateinit var etFechaProgramada: EditText
     private lateinit var eText: EditText
     private lateinit var picker: DatePickerDialog
     private lateinit var btnMakeAppointment: Button
     private var selectedTimeLayout: LinearLayout? = null
     private var selectedTime: String? = null
+    private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +46,20 @@ class GenerateDateActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         citaViewModel = ViewModelProvider(this).get(CitaViewModel::class.java)
+
+
+        // Obtener datos de la actividad
+        val nombreUsuario = intent.getStringExtra("nameDoctor")
+        val especialidadUsuario = intent.getStringExtra("doctorSpecialty")
+
+        // Realizar acciones o mostrar información según tus necesidades
+        // Por ejemplo, mostrar el nombre del usuario y su especialidad en un TextView
+        val txtNombre = findViewById<TextView>(R.id.txtDoctorFullName)
+        val txtEspecialidad = findViewById<TextView>(R.id.txtDoctorEspeciality)
+
+        txtNombre.text = nombreUsuario
+        txtEspecialidad.text = especialidadUsuario
+
 
         val buttonAtras: Button = findViewById(R.id.atras)
         buttonAtras.setOnClickListener {
@@ -101,7 +119,7 @@ class GenerateDateActivity : AppCompatActivity() {
             // date picker dialog
             picker = DatePickerDialog(
                 this@GenerateDateActivity,
-                { view: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int ->
+                { _: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int ->
                     eText.setText("$dayOfMonth/${monthOfYear + 1}/$year")
                 },
                 year,
@@ -114,15 +132,40 @@ class GenerateDateActivity : AppCompatActivity() {
         etFechaProgramada = eText
         btnMakeAppointment = findViewById(R.id.btnMakeAppointment)
 
+
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        loginViewModel.setContext(this)
+
+
+        val user: User? = loginViewModel.getAuthenticatedUser()
+        loadUserData(user)
+
         /*val fechaProgramada = etFechaProgramada.text.toString()
         val formatoFecha = SimpleDateFormat("dd/MM/yyyy")
         val fechaConvertida: Date = formatoFecha.parse(fechaProgramada)*/
 
         btnMakeAppointment.setOnClickListener {
-            guardarHoraSeleccionada()
+            //guardarHoraSeleccionada()
             registrarCita()
+            Toast.makeText(this, "Cita Reservada", Toast.LENGTH_SHORT).show()
+
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val user: User? = loginViewModel.getAuthenticatedUser()
+        loadUserData(user)
+    }
+
+    private var userId: Int = 0  // Declarar la variable userId
+
+
+    private fun loadUserData(user: User?) {
+        if (user != null) {
+            userId = user?.id ?: 0  // Asignar el valor del ID del usuario a la variable userId
+        }
     }
 
 
@@ -170,20 +213,6 @@ class GenerateDateActivity : AppCompatActivity() {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private fun guardarHoraSeleccionada() {
         if (selectedTime != null) {
             // Aquí puedes utilizar el valor de la hora seleccionada (selectedTime) como desees
@@ -197,22 +226,43 @@ class GenerateDateActivity : AppCompatActivity() {
 
     // ...
     private fun registrarCita() {
+        val idDoctor = intent.getIntExtra("idDoctor", 0)
+
+        Log.d("TAG", "El ID del usuario es: $userId")
+
         val fechaActual: ZonedDateTime = ZonedDateTime.now()
         val fechaProgramada = etFechaProgramada.text.toString()
+        val horaProgramada = selectedTime
+
+        //val fechaProgramada = "30/6/2023"
+        //val horaProgramada = "12:00 PM"
+
+        /* Crear un objeto LocalDateTime a partir de las cadenas fechaProgramada y horaProgramada
+        val fechaHoraFormateada = "$fechaProgramada $horaProgramada"
+        val formatter = DateTimeFormatter.ofPattern("d/M/yyyy h:mm a")
+        val fechaHoraLocal = LocalDateTime.parse(fechaHoraFormateada, formatter)
+
+        // Obtener la zona horaria actual
+        val zonaHorariaActual = ZoneId.systemDefault()
+
+        // Crear un objeto ZonedDateTime usando el LocalDateTime y la zona horaria actual
+        val fechaHoraZoned = ZonedDateTime.of(fechaHoraLocal, zonaHorariaActual)*/
+
 
         // Crea un objeto CitaMedica con los datos necesarios
         val cita = Cita(
             id_cita = 1,
-            id_paciente = 2,
-            id_doctor = 7,
+            id_paciente = userId,
+            id_doctor = idDoctor,
             estado = false,
             fecha_cita_creada = "$fechaActual",
-            fecha_de_cita = fechaProgramada,
+            fecha_de_cita = "2023-06-30T02:50:22Z",
             triaje = false
         )
 
         GlobalScope.launch(Dispatchers.Main) {
             citaViewModel.registrarCita(cita)
+
         }
     }
 }

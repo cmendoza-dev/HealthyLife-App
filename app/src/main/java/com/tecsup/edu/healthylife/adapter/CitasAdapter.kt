@@ -1,5 +1,6 @@
 package com.tecsup.edu.healthylife.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ class CitasAdapter(
         private val especialidadTextView: TextView = itemView.findViewById(R.id.tvCitaEspecialidad)
         private val fechaCitaTextView: TextView = itemView.findViewById(R.id.tvCitaFecha)
 
+        @SuppressLint("SetTextI18n")
         fun bind(cita: Cita, doctor: Doctor) {
             nombreDoctorTextView.text = "${doctor.nombre} ${doctor.apellido}"
             especialidadTextView.text = doctor.especialidad
@@ -33,17 +35,10 @@ class CitasAdapter(
         return CitaViewHolder(itemView)
     }
 
-    /*override fun onBindViewHolder(holder: CitaViewHolder, position: Int) {
-        val cita = citasList[position]
-        //val doctor = doctoresList.find { it.idUser == cita.id_doctor }
-        val doctor = doctoresList.find { it.idUser == cita.id_doctor }
-        doctor?.let { holder.bind(cita, it) }
-    }*/
-
     override fun onBindViewHolder(holder: CitaViewHolder, position: Int) {
         val cita = citasList[position]
         //val doctor = doctoresList.find { it.idUser == cita.id_doctor }
-        val doctor = doctoresList.find { 7 == 7 }
+        val doctor = doctoresList.find { it.id == cita.id_doctor }
         if (doctor != null) {
             Log.d(
                 "CitasAdapter",

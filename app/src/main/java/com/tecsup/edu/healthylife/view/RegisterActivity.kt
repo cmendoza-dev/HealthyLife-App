@@ -29,6 +29,8 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        supportActionBar?.hide()
+
         val linkTextView = findViewById<TextView>(R.id.linkTextView)
         linkTextView.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -57,6 +59,7 @@ class RegisterActivity : AppCompatActivity() {
             val especialidad = ""
 
             val user = User(
+                id = 1,
                 id_user = 3,
                 nombre = nombre,
                 apellido = apellido,
