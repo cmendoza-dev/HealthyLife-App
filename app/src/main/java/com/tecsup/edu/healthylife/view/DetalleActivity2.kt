@@ -89,12 +89,12 @@ class DetalleActivity2 : AppCompatActivity() {
     private fun filterUsers(searchText: String) {
         val filteredUsers = if (searchText.isNotEmpty()) {
             allUsers.filter { user ->
-                user.nombre.toLowerCase(Locale.getDefault())
-                    .contains(searchText.toLowerCase(Locale.getDefault())) ||
-                        user.apellido.toLowerCase(Locale.getDefault())
-                            .contains(searchText.toLowerCase(Locale.getDefault())) ||
-                        user.especialidad.toLowerCase(Locale.getDefault())
-                            .contains(searchText.toLowerCase(Locale.getDefault()))
+                user.nombre.lowercase(Locale.getDefault())
+                    .contains(searchText.lowercase(Locale.getDefault())) ||
+                        user.apellido.lowercase(Locale.getDefault())
+                            .contains(searchText.lowercase(Locale.getDefault())) ||
+                        user.especialidad.lowercase(Locale.getDefault())
+                            .contains(searchText.lowercase(Locale.getDefault()))
             }
         } else {
             allUsers

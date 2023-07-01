@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 
 object ApiCliente {
-    private const val BASE_URL = "http://192.168.43.109:8000/api/"
+    private const val BASE_URL = "http://192.168.1.9:8000/api/"
 
     private val retrofit: Retrofit by lazy {
         val loggingInterceptor = HttpLoggingInterceptor()

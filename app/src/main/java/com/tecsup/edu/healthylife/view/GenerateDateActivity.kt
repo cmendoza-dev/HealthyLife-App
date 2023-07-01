@@ -1,4 +1,4 @@
-package com.tecsup.edu.healthylife
+package com.tecsup.edu.healthylife.view
 
 import android.app.DatePickerDialog
 import android.content.res.ColorStateList
@@ -15,6 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.tecsup.edu.healthylife.R
 import com.tecsup.edu.healthylife.data.Cita
 import com.tecsup.edu.healthylife.data.User
 import com.tecsup.edu.healthylife.view_model.CitaViewModel

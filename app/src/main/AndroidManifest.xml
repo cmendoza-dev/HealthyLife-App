@@ -42,21 +42,22 @@
         <activity android:name=".view.DetalleActivity6" />
         <activity android:name=".view.MakeDateFromUserActivity" />
         <activity android:name=".view.DetalleActivityDefault" />
-        <activity android:name=".AccountActivity" />
+        <activity android:name=".view.AccountActivity" />
         <activity android:name=".DatingHistoryActivity" />
         <activity android:name=".RecetasMedicasActivity" />
-        <activity android:name=".GenerateDateActivity" />
+        <activity android:name=".view.GenerateDateActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".NewPasswordActivity" />
         <activity android:name=".ContextMessageActivity" />
 
         <service
-            android:name=".notificacions.FirebaseMessagingService"
+            android:name=".notificacions.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <!--
  Set custom default icon. This is used when no icon is set for incoming notification messages.
      See README(https://goo.gl/l4GJaQ) for more.

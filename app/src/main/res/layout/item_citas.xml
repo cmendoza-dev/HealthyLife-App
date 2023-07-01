@@ -1,33 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><!-- item_user.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
     android:background="@drawable/card_background"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:layout_marginBottom="18dp"
+    >
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="125dp"
+        android:layout_height="135dp"
         android:backgroundTint="@color/white"
         app:cardCornerRadius="3dp"
-        app:cardElevation="10dp">
+        app:cardElevation="10dp"
+        app:cardBackgroundColor="#FFFFFF">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="top"
-                android:src="@drawable/message" />
+                android:src="@drawable/receipt_clock_outline" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,10 +36,11 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/fechaCitaMedica"
+                    android:id="@+id/txtFechaReceta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
+                    android:textSize="16sp"
                     android:text="@string/receta"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -53,12 +55,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="5dp"
+                        android:textSize="16sp"
                         android:text="@string/especialidad" />
 
                     <TextView
-                        android:id="@+id/especialidadCitaMedica"
+                        android:id="@+id/txtEspecialidadDoctor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="16sp"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:text="Cardiología"
@@ -75,27 +79,30 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="5dp"
+                        android:textSize="16sp"
                         android:text="@string/doctor" />
 
                     <TextView
-                        android:id="@+id/doctorCitaMedica"
+                        android:id="@+id/txtNombrePaciente"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:text="Carlos Mendoza"
+                        android:textSize="16sp"
                         android:textColor="#373737" />
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btnShowPlus"
-                    android:layout_width="100dp"
+                    android:id="@+id/buttonSetAlarm"
+                    android:layout_width="140dp"
                     android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
                     android:layout_gravity="end"
                     android:backgroundTint="@color/purple_700"
-                    android:text="@string/showplus"
+                    android:text="@string/programarcita"
                     android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -105,4 +112,6 @@
 
 
 </LinearLayout>
+
+
 

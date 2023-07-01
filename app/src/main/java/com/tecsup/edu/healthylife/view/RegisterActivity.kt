@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.tecsup.edu.healthylife.R
@@ -37,7 +36,7 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
         etNombre = findViewById(R.id.NameEt)
         etApellido = findViewById(R.id.LastEt)
@@ -74,7 +73,7 @@ class RegisterActivity : AppCompatActivity() {
             userViewModel.registerUser(user)
         }
 
-        userViewModel.registrationStatus.observe(this, Observer { isSuccessful ->
+        userViewModel.registrationStatus.observe(this) { isSuccessful ->
             if (isSuccessful) {
                 // Registro exitoso, puedes realizar alguna acción aquí
                 val intent = Intent(this, LoginActivity::class.java)
@@ -97,7 +96,7 @@ class RegisterActivity : AppCompatActivity() {
                 // Aquí puedes realizar las acciones correspondientes al inicio de sesión fallido
 
             }
-        })
+        }
 
     }
 }

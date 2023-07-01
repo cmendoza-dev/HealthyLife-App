@@ -39,7 +39,7 @@ class LoginViewModel : ViewModel() {
     }
 
     fun login(email: String, password: String) {
-        val url = "http://192.168.43.109:8000/api/users/"
+        val url = "http://192.168.1.9:8000/api/users/"
         val request = Request.Builder()
             .url(url)
             .build()

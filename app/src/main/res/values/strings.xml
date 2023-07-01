@@ -22,7 +22,7 @@
     <string name="register">Registrar</string>
     <string name="generar_cita">Generar Cita</string>
     <string name="ver_recetas">Ver Recetas</string>
-    <string name="historial_citas">Historial Citas</string>
+    <string name="historial_citas">Historial de citas</string>
     <string name="cuenta">Cuenta</string>
     <string name="leave">Cerrar sesión</string>
     <string name="search">Buscar...</string>
@@ -140,4 +140,5 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="programarcita">Recordatorio</string>
 </resources>

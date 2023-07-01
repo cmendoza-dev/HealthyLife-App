@@ -5,9 +5,9 @@ import com.tecsup.edu.healthylife.data.Doctor
 import retrofit2.http.GET
 
 interface ApiInterface {
-    @GET("users")
+    @GET("users/")
     suspend fun getDoctores(): List<Doctor>
 
-    @GET("citas")
+    @GET("citas/")
     suspend fun getCitas(): List<Cita>
 }

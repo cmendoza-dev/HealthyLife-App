@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.tecsup.edu.healthylife.GenerateDateActivity
 import com.tecsup.edu.healthylife.R
 import com.tecsup.edu.healthylife.data.User
+import com.tecsup.edu.healthylife.view.GenerateDateActivity
 import java.util.Locale
 
 class DoctorSearchAdapter(private val users: List<User>) :

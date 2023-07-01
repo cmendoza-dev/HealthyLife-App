@@ -1,11 +1,9 @@
 package com.tecsup.edu.healthylife.data
 
-data class RecipeWithDoctor(
+data class Receta(
     val id: Int,
     val diagnostico: String,
     val indicaciones: String,
     val recomendacion: String,
-    val idCita: Int,
-    val doctorNombre: String,
-    val doctorEspecialidad: String
+    val id_cita: Int
 )

@@ -2,14 +2,14 @@ package com.tecsup.edu.healthylife.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tecsup.edu.healthylife.data.CitaMedica
+import com.tecsup.edu.healthylife.data.Cita
 import com.tecsup.edu.healthylife.utils.ApiCliente
 import kotlinx.coroutines.launch
 
 class CitaMedicaViewModel : ViewModel() {
     private val citasApiService = ApiCliente.citasApiService
 
-    fun registrarCitaMedica(cita: CitaMedica) {
+    fun registrarCitaMedica(cita: Cita) {
         viewModelScope.launch {
             try {
                 val response = citasApiService.registrarCita(cita)

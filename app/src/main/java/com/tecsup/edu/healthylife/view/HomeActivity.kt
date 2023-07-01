@@ -17,9 +17,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.google.android.material.navigation.NavigationView
-import com.tecsup.edu.healthylife.AccountActivity
 import com.tecsup.edu.healthylife.DatingHistoryActivity
-import com.tecsup.edu.healthylife.GenerateDateActivity
 import com.tecsup.edu.healthylife.R
 import com.tecsup.edu.healthylife.RecetasMedicasActivity
 import com.tecsup.edu.healthylife.adapter.UserAdapter
