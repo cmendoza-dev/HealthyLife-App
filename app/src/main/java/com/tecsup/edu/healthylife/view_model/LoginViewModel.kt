@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.tecsup.edu.healthylife.data.User
+import com.tecsup.edu.healthylife.utils.ConfigIP
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
@@ -39,7 +40,10 @@ class LoginViewModel : ViewModel() {
     }
 
     fun login(email: String, password: String) {
-        val url = "http://192.168.1.9:8000/api/users/"
+
+        val ip = ConfigIP.IP
+
+        val url = "http://$ip:8000/api/users/"
         val request = Request.Builder()
             .url(url)
             .build()
@@ -57,7 +61,7 @@ class LoginViewModel : ViewModel() {
                     authenticatedUserLiveData.postValue(authenticatedUser)
                     loginSuccessLiveData.postValue(true)
 
-                    // Guardar el usuario autenticado en el ViewModel
+                    // Save the authenticated user in the ViewModel
                     setAuthenticatedUser(authenticatedUser)
                 } else {
                     loginSuccessLiveData.postValue(false)
@@ -82,26 +86,26 @@ class LoginViewModel : ViewModel() {
 
                     val id = jsonUser.getInt("id")
                     val idUser = jsonUser.getInt("id_user")
-                    val nombre = jsonUser.getString("nombre")
-                    val apellido = jsonUser.getString("apellido")
+                    val name = jsonUser.getString("nombre")
+                    val lastName = jsonUser.getString("apellido")
                     val dni = jsonUser.getInt("dni")
                     val email = jsonUser.getString("email")
-                    val direccion = jsonUser.getString("direccion")
-                    val telefono = jsonUser.getInt("telefono")
+                    val address = jsonUser.getString("direccion")
+                    val phone = jsonUser.getInt("telefono")
                     val password = jsonUser.getString("password")
-                    val especialidad = jsonUser.getString("especialidad")
+                    val specialty = jsonUser.getString("especialidad")
 
                     val user = User(
                         id,
                         idUser,
-                        nombre,
-                        apellido,
+                        name,
+                        lastName,
                         dni,
                         email,
-                        direccion,
-                        telefono,
+                        address,
+                        phone,
                         password,
-                        especialidad
+                        specialty
                     )
 
                     users.add(user)

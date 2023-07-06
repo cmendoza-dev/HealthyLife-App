@@ -35,17 +35,17 @@ class MakeDateFromUserActivity : AppCompatActivity() {
 
         val buttonAtras: Button = findViewById(R.id.atras)
         buttonAtras.setOnClickListener {
-            finish() // Cierra la actividad actual
+            finish() // Close the current activity
         }
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(this, 3, RecyclerView.HORIZONTAL, false)
 
-        // Configurar el LinearSnapHelper
+        // Configuring the LinearSnapHelper
         snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(recyclerView)
 
-        // Inicializar el adaptador con una lista vacía
+        // Initialize the adapter with an empty list
         adapter = DoctorSearchAdapter(emptyList())
         recyclerView.adapter = adapter
 
@@ -62,7 +62,7 @@ class MakeDateFromUserActivity : AppCompatActivity() {
             }
         })
 
-        // Hacer la solicitud a la API y obtener los usuarios
+        // Make the request to the API and get the users
         val apiClient = ApiClient()
         apiClient.getUsers(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
@@ -71,14 +71,14 @@ class MakeDateFromUserActivity : AppCompatActivity() {
                     if (users != null) {
                         allUsers = users.filter { it.id_user == 1 }
 
-                        // Actualizar el adaptador con la lista completa de usuarios
+                        // Update the adapter with the full list of users
                         updateAdapter(allUsers)
                     }
                 }
             }
 
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                // Manejar el error de la solicitud
+                // Handle request error
             }
         })
 

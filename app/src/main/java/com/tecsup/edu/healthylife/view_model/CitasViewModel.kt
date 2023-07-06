@@ -24,7 +24,7 @@ class CitasViewModel : ViewModel() {
             val citas = citasRepository.getCitas()
             val doctores = citasRepository.getDoctores()
 
-            // Agregar registros de depuración para verificar los datos obtenidos
+            // Add debug logs to verify the data obtained
             Log.d("CitasViewModel", "Tamaño de citas: ${citas.size}")
             Log.d("CitasViewModel", "Tamaño de doctores: ${doctores.size}")
 

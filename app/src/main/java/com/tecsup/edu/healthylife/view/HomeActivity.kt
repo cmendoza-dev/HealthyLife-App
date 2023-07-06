@@ -47,7 +47,7 @@ class HomeActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Obtener referencias a las tarjetas
+        // Get references to cards
         val card1 = findViewById<LinearLayout>(R.id.card1)
         val card2 = findViewById<LinearLayout>(R.id.card2)
         val card3 = findViewById<LinearLayout>(R.id.card3)
@@ -55,7 +55,7 @@ class HomeActivity : AppCompatActivity() {
         val card5 = findViewById<LinearLayout>(R.id.card5)
         val card6 = findViewById<LinearLayout>(R.id.card6)
 
-        // Agregar clic listeners a las tarjetas
+        // Add click listeners to cards
         card1.setOnClickListener { changeCardColor(it) }
         card2.setOnClickListener { changeCardColor(it) }
         card3.setOnClickListener { changeCardColor(it) }
@@ -76,26 +76,26 @@ class HomeActivity : AppCompatActivity() {
         recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        // Configurar el LinearSnapHelper
+        // Configuring the LinearSnapHelper
         snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(recyclerView)
 
 
-        // Inicializar el adaptador con una lista vacía
+        // Initialize the adapter with an empty list
         adapter = UserAdapter(emptyList())
         recyclerView.adapter = adapter
 
-        // Hacer la solicitud a la API y obtener los usuarios
+        // Make the request to the API and get the users
         val apiClient = ApiClient()
         apiClient.getUsers(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 if (response.isSuccessful) {
                     val users = response.body()
                     if (users != null) {
-                        // Filtrar los usuarios con id_user igual a 1
+                        // Filter users with id_user equal to 1
                         val filteredUsers = users.filter { it.id_user == 1 }
 
-                        // Actualizar el adaptador con la lista de usuarios filtrados
+                        // Update the adapter with the list of filtered users
                         adapter = UserAdapter(filteredUsers)
                         recyclerView.adapter = adapter
                     }
@@ -103,7 +103,7 @@ class HomeActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                // Manejar el error de la solicitud
+                // Handle request error
             }
         })
 
@@ -111,38 +111,38 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private var selectedCard: LinearLayout? =
-        null // Variable para almacenar la tarjeta seleccionada actualmente
+        null // Variable to store the currently selected card
 
     private fun changeCardColor(view: View) {
         val card = view as LinearLayout
-        val textColorSelected = Color.WHITE // Color del texto cuando está seleccionada
-        val textColorNormal = Color.BLACK // Color del texto en estado normal
+        val textColorSelected = Color.WHITE // Text color when selected
+        val textColorNormal = Color.BLACK // Text color in normal state
 
 
         val textView =
-            card.getChildAt(1) as TextView // Obtener el TextView (suponiendo que está en la segunda posición)
+            card.getChildAt(1) as TextView // Get the TextView (suponiendo que está en la segunda posición)
 
         if (selectedCard != null && selectedCard != card) {
-            // Deseleccionar la tarjeta anteriormente seleccionada
-            selectedCard!!.setBackgroundColor(Color.WHITE) // Color de fondo normal (transparente)
+            // Deselect previously selected card
+            selectedCard!!.setBackgroundColor(Color.WHITE) // Background color white
             (selectedCard!!.getChildAt(1) as TextView).setTextColor(textColorNormal)
             selectedCard!!.tag = null
         }
 
         if (card.tag == null || card.tag.toString() != "selected") {
-            // La tarjeta no estaba seleccionada
-            card.setBackgroundColor(Color.parseColor("#6b5ad3")) // Color de fondo seleccionado
+            // The card was not selected
+            card.setBackgroundColor(Color.parseColor("#6b5ad3")) // Selected background color
             textView.setTextColor(textColorSelected)
             card.tag = "selected"
             selectedCard = card
 
             val cardId =
-                determineCardId(card) // Método para determinar el cardId de la tarjeta seleccionada
-            startDetailActivity(cardId) // Mostrar la actividad de detalle correspondiente
+                determineCardId(card) // Method to determine the cardId of the selected card
+            startDetailActivity(cardId) // Show the corresponding detail activity
 
         } else {
-            // La tarjeta estaba seleccionada, restaurar colores normales
-            card.setBackgroundColor(Color.WHITE) // Color de fondo normal (transparente)
+            // Card was selected, restore normal colors
+            card.setBackgroundColor(Color.WHITE) // Background color white
             textView.setTextColor(textColorNormal)
             card.tag = null
             selectedCard = null
@@ -157,7 +157,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun determineCardId(card: LinearLayout): Int {
         val cardIdString =
-            card.resources.getResourceEntryName(card.id) // Obtener el ID de la tarjeta como String (ejemplo: "card1")
+            card.resources.getResourceEntryName(card.id) // Get the card ID as String
 
         return parseCardId(cardIdString)
     }
@@ -175,7 +175,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-    fun getDetailActivityClass(cardId: Int): Class<*> {
+    private fun getDetailActivityClass(cardId: Int): Class<*> {
         return when (cardId) {
             1 -> DetalleActivity1::class.java
             2 -> DetalleActivity2::class.java
@@ -208,7 +208,7 @@ class HomeActivity : AppCompatActivity() {
                 }
 
                 R.id.recetas -> {
-                    Toast.makeText(this, "Ver Recetas", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Ver recetas", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, RecetasMedicasActivity::class.java)
                     startActivity(intent)
                     true
@@ -243,12 +243,12 @@ class HomeActivity : AppCompatActivity() {
                 }
 
                 R.id.leave -> {
-                    // Acciones para cerrar sesión
+                    // Actions to log out
                     clearSharedPreferences()
                     //invalidateAuthenticationToken()
                     //resetAppState()
 
-                    // Redirigir al usuario a la pantalla de inicio de sesión
+                    // Redirect user to login screen
                     val intent = Intent(this, LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
@@ -261,11 +261,6 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-
     }
 
     private fun clearSharedPreferences() {

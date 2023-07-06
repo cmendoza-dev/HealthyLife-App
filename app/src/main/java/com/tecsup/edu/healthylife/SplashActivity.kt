@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
         tvTexto = findViewById(R.id.tvTexto)
 
 
-        val textoCompleto = "Healthy Life"
+        val textoCompleto = "HEALTHY LIFE"
         val delayMilisegundos = 100L
 
         escribirTexto(textoCompleto, delayMilisegundos)

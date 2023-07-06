@@ -75,11 +75,11 @@ class RegisterActivity : AppCompatActivity() {
 
         userViewModel.registrationStatus.observe(this) { isSuccessful ->
             if (isSuccessful) {
-                // Registro exitoso, puedes realizar alguna acción aquí
+                // Successful registration
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             } else {
-                // Registro fallido, puedes mostrar un mensaje de error
+                // Registration failed, display an error message
                 val dialogBuilder = AlertDialog.Builder(this)
                 val inflater = layoutInflater
                 val dialogView = inflater.inflate(R.layout.dialog_error_registeruser, null)
@@ -90,10 +90,10 @@ class RegisterActivity : AppCompatActivity() {
 
                 val btnAceptar = dialogView.findViewById<Button>(R.id.btnAceptar)
                 btnAceptar.setOnClickListener {
-                    // Acciones al hacer clic en el botón "Aceptar"
+                    // Action when clicking the "OK" button
                     dialog.dismiss()
                 }
-                // Aquí puedes realizar las acciones correspondientes al inicio de sesión fallido
+                // Perform the actions corresponding to the failed login
 
             }
         }

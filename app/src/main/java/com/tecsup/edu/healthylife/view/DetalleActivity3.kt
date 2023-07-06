@@ -59,7 +59,7 @@ class DetalleActivity3 : AppCompatActivity(), OnMapReadyCallback, OnMyLocationBu
 
     private fun isLocationPermissionGrantend() = ContextCompat.checkSelfPermission(
         this,
-        android.Manifest.permission.ACCESS_FINE_LOCATION
+        Manifest.permission.ACCESS_FINE_LOCATION
     ) == PackageManager.PERMISSION_GRANTED
 
 
@@ -89,7 +89,8 @@ class DetalleActivity3 : AppCompatActivity(), OnMapReadyCallback, OnMyLocationBu
                 Manifest.permission.ACCESS_FINE_LOCATION
             )
         ) {
-            Toast.makeText(this, "Ve a ajustes y acepta los permisos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Ve a la configuración y acepta los permisos.", Toast.LENGTH_SHORT)
+                .show()
         } else {
             ActivityCompat.requestPermissions(
                 this,
@@ -137,7 +138,8 @@ class DetalleActivity3 : AppCompatActivity(), OnMapReadyCallback, OnMyLocationBu
                 return
             }
             map.isMyLocationEnabled = false
-            Toast.makeText(this, "Ve a ajustes y acepta los permisos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Ve a la configuración y acepta los permisos.", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

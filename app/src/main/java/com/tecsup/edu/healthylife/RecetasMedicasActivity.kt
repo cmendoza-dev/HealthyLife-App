@@ -14,6 +14,7 @@ import com.tecsup.edu.healthylife.data.Cita
 import com.tecsup.edu.healthylife.data.Receta
 import com.tecsup.edu.healthylife.data.User
 import com.tecsup.edu.healthylife.data.UserReceta
+import com.tecsup.edu.healthylife.utils.ConfigIP
 import com.tecsup.edu.healthylife.view_model.LoginViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -45,27 +46,29 @@ class RecetasMedicasActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Obtener los datos de usuarios, citas y recetas
+        // Obtain user data, appointments and recipes
         obtenerDatos()
     }
 
+    private val ip = ConfigIP.IP
+
     private fun obtenerDatos() {
-        val urlUsers = "http://192.168.1.9:8000/api/users/"
-        val urlCitas = "http://192.168.1.9:8000/api/citas/"
-        val urlRecetas = "http://192.168.1.9:8000/api/recetas/"
+        val urlUsers = "http://$ip:8000/api/users/"
+        val urlCitas = "http://$ip:8000/api/citas/"
+        val urlRecetas = "http://$ip:8000/api/recetas/"
 
         val client = OkHttpClient()
 
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         loginViewModel.setContext(this)
 
         val user: User? = loginViewModel.getAuthenticatedUser()
         loadUserData(user)
 
-        // Obtener el ID del usuario logeado (reemplaza USER_ID con la lógica adecuada para obtener el ID del usuario)
+        // Get the ID of the logged in user
         val userId = userId
 
-        // Realizar las solicitudes HTTP en paralelo utilizando coroutines
+        // Perform HTTP requests in parallel using coroutines
         GlobalScope.launch(Dispatchers.IO) {
             val usersResponse = async { fetchData(client, urlUsers) }
             val citasResponse = async { fetchData(client, urlCitas) }
@@ -79,14 +82,14 @@ class RecetasMedicasActivity : AppCompatActivity() {
             val citas = parseCitas(citasJsonArray)
             val recetas = parseRecetas(recetasJsonArray)
 
-            // Filtrar las citas por el ID del usuario logeado
+            // Filter citations by logged in user ID
             val filteredCitas = citas.filter { it.id_paciente == userId }
 
-            // Filtrar las recetas por las citas filtradas
+            // Filter recipes by filtered citations
             val filteredRecetas =
                 recetas.filter { filteredCitas.map { cita -> cita.id_cita }.contains(it.id_cita) }
 
-            // Asignar los datos al adaptador del RecyclerView en el hilo principal
+            // Assign the data to the adapter of the RecyclerView in the main thread
             withContext(Dispatchers.Main) {
                 recetaAdapter = RecetaAdapter(users, filteredCitas, filteredRecetas) { receta ->
                     mostrarDetallesReceta(receta)
@@ -102,11 +105,11 @@ class RecetasMedicasActivity : AppCompatActivity() {
         loadUserData(user)
     }
 
-    private var userId: Int = 0  // Declarar la variable userId
+    private var userId: Int = 0  // Declare the userId variable
 
     private fun loadUserData(user: User?) {
         if (user != null) {
-            userId = user.id ?: 0  // Asignar el valor del ID del usuario a la variable userId
+            userId = user.id  // Assign the user ID value to the userId variable
         }
     }
 
@@ -133,7 +136,7 @@ class RecetasMedicasActivity : AppCompatActivity() {
             val telefono = jsonObject.getInt("telefono")
             val password = jsonObject.getString("password")
             val especialidad = jsonObject.getString("especialidad")
-            val id_user = jsonObject.getInt("id_user")
+            val idUser = jsonObject.getInt("id_user")
 
             val user = UserReceta(
                 id,
@@ -145,7 +148,7 @@ class RecetasMedicasActivity : AppCompatActivity() {
                 telefono,
                 password,
                 especialidad,
-                id_user
+                idUser
             )
             users.add(user)
         }
@@ -197,9 +200,9 @@ class RecetasMedicasActivity : AppCompatActivity() {
 
         GlobalScope.launch(Dispatchers.Main) {
 
-            dialogView.findViewById<TextView>(R.id.txtDiagnostico).text = "${receta.diagnostico}"
-            dialogView.findViewById<TextView>(R.id.txtIndicaciones).text = "${receta.indicaciones}"
-            dialogView.findViewById<TextView>(R.id.txtRecomendaciones).text = "${receta.recomendacion}"
+            dialogView.findViewById<TextView>(R.id.txtDiagnostico).text = receta.diagnostico
+            dialogView.findViewById<TextView>(R.id.txtIndicaciones).text = receta.indicaciones
+            dialogView.findViewById<TextView>(R.id.txtRecomendaciones).text = receta.recomendacion
 
             val dialogBuilder = AlertDialog.Builder(this@RecetasMedicasActivity)
                 .setView(dialogView)

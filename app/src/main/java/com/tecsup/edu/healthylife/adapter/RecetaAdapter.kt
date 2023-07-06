@@ -42,7 +42,8 @@ class RecetaAdapter(
     inner class RecetaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val txtFechaReceta: TextView = itemView.findViewById(R.id.txtFechaReceta)
         private val txtNombrePaciente: TextView = itemView.findViewById(R.id.txtNombrePaciente)
-        private val txtEspecialidadDoctor: TextView = itemView.findViewById(R.id.txtEspecialidadDoctor)
+        private val txtEspecialidadDoctor: TextView =
+            itemView.findViewById(R.id.txtEspecialidadDoctor)
         val btnVerMas: Button = itemView.findViewById(R.id.btnVerMas)
 
         fun bind(cita: Cita?, receta: Receta, paciente: UserReceta?, doctor: UserReceta?) {

@@ -4,7 +4,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClientes {
-    private const val BASE_URL = "http://192.168.1.9:8000/api/"
+
+    private const val ip = ConfigIP.IP
+
+    private const val BASE_URL = "http://$ip:8000/api/"
 
     fun create(): ApiInterface {
         val retrofit = Retrofit.Builder()

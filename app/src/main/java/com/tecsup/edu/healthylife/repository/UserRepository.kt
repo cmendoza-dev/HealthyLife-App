@@ -8,7 +8,6 @@ import retrofit2.Response
 
 class UserRepository {
     private val apiService: ApiService = RetrofitClient.create()
-
     suspend fun registerUser(user: User): Response<ResponseBody> {
         return apiService.registerUser(user)
     }

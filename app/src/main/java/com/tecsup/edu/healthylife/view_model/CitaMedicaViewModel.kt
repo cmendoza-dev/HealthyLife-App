@@ -14,14 +14,14 @@ class CitaMedicaViewModel : ViewModel() {
             try {
                 val response = citasApiService.registrarCita(cita)
                 if (response.isSuccessful) {
-                    // Cita médica registrada exitosamente
+                    // Medical appointment registered successfully
                     // Realizar cualquier acción necesaria aquí
                 } else {
-                    // Ocurrió un error al registrar la cita médica
+                    // An error occurred while registering the medical appointment
                     // Manejar el error según sea necesario
                 }
             } catch (e: Exception) {
-                // Ocurrió una excepción al realizar la solicitud
+                // An exception occurred while making the request
                 // Manejar la excepción según sea necesario
             }
         }

@@ -1,11 +1,7 @@
 package com.tecsup.edu.healthylife
 
 import android.app.AlarmManager
-import android.app.DatePickerDialog
 import android.app.PendingIntent
-import android.app.TimePickerDialog
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
@@ -20,7 +16,7 @@ import com.tecsup.edu.healthylife.data.Cita
 import com.tecsup.edu.healthylife.data.Receta
 import com.tecsup.edu.healthylife.data.User
 import com.tecsup.edu.healthylife.data.UserReceta
-import com.tecsup.edu.healthylife.notificacions.AlarmReceiver
+import com.tecsup.edu.healthylife.utils.ConfigIP
 import com.tecsup.edu.healthylife.view_model.LoginViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -30,7 +26,6 @@ import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONArray
-import java.util.Calendar
 
 class DatingHistoryActivity : AppCompatActivity() {
 
@@ -75,26 +70,27 @@ class DatingHistoryActivity : AppCompatActivity() {
         }*/
 
 
-
     }
 
+    private val ip = ConfigIP.IP
+
     private fun obtenerDatos() {
-        val urlUsers = "http://192.168.1.9:8000/api/users/"
-        val urlCitas = "http://192.168.1.9:8000/api/citas/"
-        val urlRecetas = "http://192.168.1.9:8000/api/recetas/"
+        val urlUsers = "http://$ip:8000/api/users/"
+        val urlCitas = "http://$ip:8000/api/citas/"
+        val urlRecetas = "http://$ip:8000/api/recetas/"
 
         val client = OkHttpClient()
 
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         loginViewModel.setContext(this)
 
         val user: User? = loginViewModel.getAuthenticatedUser()
         loadUserData(user)
 
-        // Obtener el ID del usuario logeado (reemplaza USER_ID con la lógica adecuada para obtener el ID del usuario)
+        // Get the ID of the logged in user
         val userId = userId
 
-        // Realizar las solicitudes HTTP en paralelo utilizando coroutines
+        // Perform HTTP requests in parallel using coroutines
         GlobalScope.launch(Dispatchers.IO) {
             val usersResponse = async { fetchData(client, urlUsers) }
             val citasResponse = async { fetchData(client, urlCitas) }
@@ -108,13 +104,12 @@ class DatingHistoryActivity : AppCompatActivity() {
             val citas = parseCitas(citasJsonArray)
             val recetas = parseRecetas(recetasJsonArray)
 
-            // Filtrar las citas por el ID del usuario logeado
+            // Filter citations by logged in user ID
             val filteredCitas = citas.filter { it.id_paciente == userId }
 
-            // Filtrar las recetas por las citas filtradas
+            // Filter recipes by filtered citations
             val filteredRecetas =
-            recetas.filter { filteredCitas.map { cita -> cita.id_cita }.contains(it.id_cita) }
-
+                recetas.filter { filteredCitas.map { cita -> cita.id_cita }.contains(it.id_cita) }
 
 
             // Asignar los datos al adaptador del RecyclerView en el hilo principal
@@ -126,9 +121,6 @@ class DatingHistoryActivity : AppCompatActivity() {
             }
 
 
-
-
-
         }
     }
 
@@ -138,11 +130,11 @@ class DatingHistoryActivity : AppCompatActivity() {
         loadUserData(user)
     }
 
-    private var userId: Int = 0  // Declarar la variable userId
+    private var userId: Int = 0  // Declarer la variable userId
 
     private fun loadUserData(user: User?) {
         if (user != null) {
-            userId = user.id ?: 0  // Asignar el valor del ID del usuario a la variable userId
+            userId = user.id  // Assign el valor del ID del usuario logeado
         }
     }
 
@@ -169,7 +161,7 @@ class DatingHistoryActivity : AppCompatActivity() {
             val telefono = jsonObject.getInt("telefono")
             val password = jsonObject.getString("password")
             val especialidad = jsonObject.getString("especialidad")
-            val id_user = jsonObject.getInt("id_user")
+            val idUser = jsonObject.getInt("id_user")
 
             val user = UserReceta(
                 id,
@@ -181,7 +173,7 @@ class DatingHistoryActivity : AppCompatActivity() {
                 telefono,
                 password,
                 especialidad,
-                id_user
+                idUser
             )
             users.add(user)
         }
@@ -228,11 +220,6 @@ class DatingHistoryActivity : AppCompatActivity() {
         return recetas
     }
 
-
-
-
-
-
     private fun mostrarDetallesReceta(receta: Receta) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_receta, null)
 
@@ -240,7 +227,8 @@ class DatingHistoryActivity : AppCompatActivity() {
 
             dialogView.findViewById<TextView>(R.id.txtDiagnostico).text = "${receta.diagnostico}"
             dialogView.findViewById<TextView>(R.id.txtIndicaciones).text = "${receta.indicaciones}"
-            dialogView.findViewById<TextView>(R.id.txtRecomendaciones).text = "${receta.recomendacion}"
+            dialogView.findViewById<TextView>(R.id.txtRecomendaciones).text =
+                "${receta.recomendacion}"
 
             val dialogBuilder = AlertDialog.Builder(this@DatingHistoryActivity)
                 .setView(dialogView)

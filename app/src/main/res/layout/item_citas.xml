@@ -3,21 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="18dp"
     android:background="@drawable/card_background"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:layout_marginBottom="18dp"
-    >
+    android:padding="10dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="135dp"
         android:backgroundTint="@color/white"
+        app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="3dp"
-        app:cardElevation="10dp"
-        app:cardBackgroundColor="#FFFFFF">
+        app:cardElevation="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,9 +39,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:textSize="16sp"
                     android:text="@string/receta"
                     android:textColor="@color/black"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -55,18 +54,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="5dp"
-                        android:textSize="16sp"
-                        android:text="@string/especialidad" />
+                        android:text="@string/especialidad"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/txtEspecialidadDoctor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:text="Cardiología"
-                        android:textColor="#373737" />
+                        android:textColor="#373737"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -79,8 +78,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="5dp"
-                        android:textSize="16sp"
-                        android:text="@string/doctor" />
+                        android:text="@string/doctor"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/txtNombrePaciente"
@@ -89,16 +88,16 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:text="Carlos Mendoza"
-                        android:textSize="16sp"
-                        android:textColor="#373737" />
+                        android:textColor="#373737"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/buttonSetAlarm"
                     android:layout_width="140dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="15dp"
                     android:layout_gravity="end"
+                    android:layout_marginTop="15dp"
                     android:backgroundTint="@color/purple_700"
                     android:text="@string/programarcita"
                     android:textColor="@color/white"

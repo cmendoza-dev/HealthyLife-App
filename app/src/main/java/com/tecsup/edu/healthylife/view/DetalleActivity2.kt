@@ -35,17 +35,17 @@ class DetalleActivity2 : AppCompatActivity() {
 
         val buttonAtras: Button = findViewById(R.id.atras)
         buttonAtras.setOnClickListener {
-            finish() // Cierra la actividad actual
+            finish() // Close the current activity
         }
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(this, 3, RecyclerView.HORIZONTAL, false)
 
-        // Configurar el LinearSnapHelper
+        // Configuring the LinearSnapHelper
         snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(recyclerView)
 
-        // Inicializar el adaptador con una lista vacía
+        // Initialize the adapter with an empty list
         adapter = DoctorAdapter(emptyList())
         recyclerView.adapter = adapter
 
@@ -79,7 +79,7 @@ class DetalleActivity2 : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                // Manejar el error de la solicitud
+                // Handle request error
             }
         })
 
