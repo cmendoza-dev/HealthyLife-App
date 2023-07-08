@@ -16,7 +16,7 @@ class CitaViewModel : ViewModel() {
 
     init {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://$ip/api/")
+            .baseUrl("http://$ip:8000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

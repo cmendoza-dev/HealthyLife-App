@@ -2,6 +2,6 @@ package com.tecsup.edu.healthylife.utils
 
 class ConfigIP {
     companion object {
-        const val IP = "192.168.43.109"
+        const val IP = "10.250.171.157"
     }
 }

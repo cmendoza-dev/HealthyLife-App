@@ -257,7 +257,7 @@ class GenerateDateActivity : AppCompatActivity() {
             id_doctor = idDoctor,
             estado = false,
             fecha_cita_creada = "$fechaActual",
-            fecha_de_cita = "2023-06-30T02:50:22Z",
+            fecha_de_cita = "2023-07-08T11:00:22Z",
             triaje = false
         )
 
