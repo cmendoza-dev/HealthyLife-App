@@ -19,6 +19,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <receiver
+            android:name=".widget.calendarWidget"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/calendar_widget_info" />
+        </receiver>
+
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashActivity"
@@ -35,8 +47,9 @@
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.HomeActivity" />
         <activity android:name=".view.DetalleActivity1" />
-        <activity android:name=".view.DetalleActivity2"
-            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name=".view.DetalleActivity2"
+            android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".view.DetalleActivity3" />
         <activity android:name=".view.DetalleActivity4" />
         <activity android:name=".view.DetalleActivity5" />
@@ -59,6 +72,10 @@
             </intent-filter>
         </service>
 
+        <service
+            android:name=".CalendarWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
         <!--
  Set custom default icon. This is used when no icon is set for incoming notification messages.
      See README(https://goo.gl/l4GJaQ) for more.
@@ -66,11 +83,9 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_stat_notifications_active" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_api_key" />
-
     </application>
 
 </manifest>

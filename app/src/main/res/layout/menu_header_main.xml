@@ -11,26 +11,4 @@
     android:paddingBottom="8dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:paddingTop="8dp"
-        android:src="@drawable/user" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:text="Carlos Mendoza"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#ffffff" />
-
-    <TextView
-        android:id="@+id/userEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="#ffffff" />
-
-
 </LinearLayout>
