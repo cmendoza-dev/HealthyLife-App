@@ -1,6 +1,7 @@
 package com.tecsup.edu.healthylife.utils
 
 import com.tecsup.edu.healthylife.data.Cita
+import com.tecsup.edu.healthylife.data.Doctor
 import com.tecsup.edu.healthylife.data.User
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -11,6 +12,13 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ApiService {
+
+    @GET("users/")
+    suspend fun getDoctores(): List<Doctor>
+
+    @GET("citas/")
+    suspend fun getCitas(): List<Cita>
+
     @POST("users/")
     suspend fun registerUser(@Body user: User): Response<ResponseBody>
 
@@ -24,6 +32,9 @@ interface ApiService {
     // Define el endpoint para obtener los datos de la cita por su id
     @GET("citas/{id}")
     fun getCita(@Path("id") id: Int): Call<Cita>
+
+    @POST("citas/")
+    suspend fun registrarCita(@Body cita: Cita): Response<ResponseBody>
 
 
 }

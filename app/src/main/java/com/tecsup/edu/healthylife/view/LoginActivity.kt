@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.tecsup.edu.healthylife.R
-import com.tecsup.edu.healthylife.ResetPasswordActivity
 import com.tecsup.edu.healthylife.view_model.LoginViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -35,7 +35,8 @@
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.HomeActivity" />
         <activity android:name=".view.DetalleActivity1" />
-        <activity android:name=".view.DetalleActivity2" />
+        <activity android:name=".view.DetalleActivity2"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".view.DetalleActivity3" />
         <activity android:name=".view.DetalleActivity4" />
         <activity android:name=".view.DetalleActivity5" />
@@ -43,12 +44,12 @@
         <activity android:name=".view.MakeDateFromUserActivity" />
         <activity android:name=".view.DetalleActivityDefault" />
         <activity android:name=".view.AccountActivity" />
-        <activity android:name=".DatingHistoryActivity" />
-        <activity android:name=".RecetasMedicasActivity" />
+        <activity android:name=".view.DatingHistoryActivity" />
+        <activity android:name=".view.RecetasMedicasActivity" />
         <activity android:name=".view.GenerateDateActivity" />
-        <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".NewPasswordActivity" />
-        <activity android:name=".ContextMessageActivity" />
+        <activity android:name=".view.ResetPasswordActivity" />
+        <activity android:name=".view.NewPasswordActivity" />
+        <activity android:name=".view.ContextMessageActivity" />
 
         <service
             android:name=".notificacions.MyFirebaseMessagingService"

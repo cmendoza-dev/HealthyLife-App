@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -30,6 +31,13 @@ class DetalleActivity3 : AppCompatActivity(), OnMapReadyCallback, OnMyLocationBu
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle3)
         supportActionBar?.hide()
+
+
+        val buttonAtras: Button = findViewById(R.id.atras)
+        buttonAtras.setOnClickListener {
+            finish() // Close the current activity
+        }
+
 
         createFragment()
     }

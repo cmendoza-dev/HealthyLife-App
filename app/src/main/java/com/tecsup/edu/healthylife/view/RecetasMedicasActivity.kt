@@ -1,7 +1,5 @@
-package com.tecsup.edu.healthylife
+package com.tecsup.edu.healthylife.view
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
@@ -11,7 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.tecsup.edu.healthylife.adapter.CitasAdapter
+import com.tecsup.edu.healthylife.R
+import com.tecsup.edu.healthylife.adapter.RecetaAdapter
 import com.tecsup.edu.healthylife.data.Cita
 import com.tecsup.edu.healthylife.data.Receta
 import com.tecsup.edu.healthylife.data.User
@@ -27,19 +26,16 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONArray
 
-class DatingHistoryActivity : AppCompatActivity() {
+class RecetasMedicasActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var recetaAdapter: CitasAdapter
-
-    private lateinit var alarmManager: AlarmManager
-    private lateinit var alarmIntent: PendingIntent
+    private lateinit var recetaAdapter: RecetaAdapter
 
     private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_datinghistory)
+        setContentView(R.layout.activity_recetasmedicas)
 
         supportActionBar?.hide()
 
@@ -51,25 +47,8 @@ class DatingHistoryActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Obtener los datos de usuarios, citas y recetas
+        // Obtain user data, appointments and recipes
         obtenerDatos()
-
-        /* Obtener referencias a los elementos de la interfaz de usuario
-        val buttonSetAlarm: Button = findViewById(R.id.buttonSetAlarm)
-
-        // Obtener una instancia del servicio de alarma
-        alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-        // Crear un intent para el BroadcastReceiver de la alarma
-        val intent = Intent(this, AlarmReceiver::class.java)
-        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-
-        // Configurar el clic del botón para establecer la alarma
-        buttonSetAlarm.setOnClickListener {
-            showDateTimePicker()
-        }*/
-
-
     }
 
     private val ip = ConfigIP.IP
@@ -111,16 +90,13 @@ class DatingHistoryActivity : AppCompatActivity() {
             val filteredRecetas =
                 recetas.filter { filteredCitas.map { cita -> cita.id_cita }.contains(it.id_cita) }
 
-
-            // Asignar los datos al adaptador del RecyclerView en el hilo principal
+            // Assign the data to the adapter of the RecyclerView in the main thread
             withContext(Dispatchers.Main) {
-                recetaAdapter = CitasAdapter(users, filteredCitas, filteredRecetas) { receta ->
+                recetaAdapter = RecetaAdapter(users, filteredCitas, filteredRecetas) { receta ->
                     mostrarDetallesReceta(receta)
                 }
                 recyclerView.adapter = recetaAdapter
             }
-
-
         }
     }
 
@@ -130,11 +106,11 @@ class DatingHistoryActivity : AppCompatActivity() {
         loadUserData(user)
     }
 
-    private var userId: Int = 0  // Declarer la variable userId
+    private var userId: Int = 0  // Declare the userId variable
 
     private fun loadUserData(user: User?) {
         if (user != null) {
-            userId = user.id  // Assign el valor del ID del usuario logeado
+            userId = user.id  // Assign the user ID value to the userId variable
         }
     }
 
@@ -225,12 +201,11 @@ class DatingHistoryActivity : AppCompatActivity() {
 
         GlobalScope.launch(Dispatchers.Main) {
 
-            dialogView.findViewById<TextView>(R.id.txtDiagnostico).text = "${receta.diagnostico}"
-            dialogView.findViewById<TextView>(R.id.txtIndicaciones).text = "${receta.indicaciones}"
-            dialogView.findViewById<TextView>(R.id.txtRecomendaciones).text =
-                "${receta.recomendacion}"
+            dialogView.findViewById<TextView>(R.id.txtDiagnostico).text = receta.diagnostico
+            dialogView.findViewById<TextView>(R.id.txtIndicaciones).text = receta.indicaciones
+            dialogView.findViewById<TextView>(R.id.txtRecomendaciones).text = receta.recomendacion
 
-            val dialogBuilder = AlertDialog.Builder(this@DatingHistoryActivity)
+            val dialogBuilder = AlertDialog.Builder(this@RecetasMedicasActivity)
                 .setView(dialogView)
                 .setPositiveButton("Cerrar") { dialog, _ ->
                     dialog.dismiss()
@@ -240,31 +215,5 @@ class DatingHistoryActivity : AppCompatActivity() {
             dialog.show()
         }
     }
-
-    /*private fun showDateTimePicker() {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        val hour = calendar.get(Calendar.HOUR_OF_DAY)
-        val minute = calendar.get(Calendar.MINUTE)
-
-        val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-            calendar.set(selectedYear, selectedMonth, selectedDay)
-            val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
-                calendar.set(Calendar.HOUR_OF_DAY, selectedHour)
-                calendar.set(Calendar.MINUTE, selectedMinute)
-
-                setAlarm(calendar)
-            }, hour, minute, true)
-            timePickerDialog.show()
-        }, year, month, day)
-        datePickerDialog.show()
-    }
-
-    private fun setAlarm(calendar: Calendar) {
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, alarmIntent)
-    }*/
-
 
 }

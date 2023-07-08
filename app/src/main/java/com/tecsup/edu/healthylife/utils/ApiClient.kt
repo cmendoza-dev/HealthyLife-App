@@ -9,25 +9,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiClient {
 
     private val ip = ConfigIP.IP
-
-
     private val baseUrl = "http://$ip:8000/api/"
-    private val retrofit: Retrofit
+    private val client = OkHttpClient.Builder().build()
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .client(client)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
-    init {
-        val client = OkHttpClient.Builder().build()
-
-        retrofit = Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+    private val apiService: ApiService = retrofit.create(ApiService::class.java)
 
     fun getUsers(callback: Callback<List<User>>) {
-        val apiService = retrofit.create(ApiService::class.java)
         val call = apiService.getUsers()
         call.enqueue(callback)
     }
-
 }

@@ -9,6 +9,7 @@ import android.text.style.TypefaceSpan
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
+
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var tvTexto: TextView
@@ -25,9 +26,11 @@ class SplashActivity : AppCompatActivity() {
 
         escribirTexto(textoCompleto, delayMilisegundos)
 
-        Handler().postDelayed({
+        Handler(mainLooper).postDelayed({
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            finish()
         }, 4000)
+
 
     }
 

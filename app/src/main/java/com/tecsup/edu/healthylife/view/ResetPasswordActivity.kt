@@ -1,26 +1,25 @@
-package com.tecsup.edu.healthylife
+package com.tecsup.edu.healthylife.view
+
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.tecsup.edu.healthylife.view.HomeActivity
+import com.tecsup.edu.healthylife.R
 
-
-class NewPasswordActivity : AppCompatActivity() {
+class ResetPasswordActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_newpassword)
+        setContentView(R.layout.activity_resetpassword)
 
         supportActionBar?.hide()
 
-        val buttonLogin = findViewById<Button>(R.id.btnNextLogin)
+        val buttonLogin = findViewById<Button>(R.id.btnSend)
         buttonLogin.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, ContextMessageActivity::class.java))
         }
 
 
     }
 }
-
